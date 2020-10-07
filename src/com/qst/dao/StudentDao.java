@@ -16,5 +16,5 @@ public interface StudentDao {
     //查询所有学生信息
     public List<Student> queryStudents();
     //根据学生姓名查询
-    public List<Student> queryByStudentName(String userName);
+    public Student queryByStudentName(String userName);
 }

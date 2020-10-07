@@ -32,10 +32,10 @@ public class StudentDaoImpl extends BaseDao implements StudentDao {
     }
 
     @Override
-    public List<Student> queryByStudentName(String userName) {
+    public Student queryByStudentName(String userName) {
         String sql="select t_id,userName,t_name,age,sex,education,course_id from teacher WHERE userName=?";
-        //return queryForOne(Student.class,sql,userName);
-        return null;
+        return queryForOne(Student.class,sql,userName);
+
     }
 
 }
