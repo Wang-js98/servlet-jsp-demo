@@ -36,7 +36,7 @@ public class StudentDaoTest {
     }
     @Test
     public void queryByStudentName() {
-        System.out.println(studentDao.queryByStudentName("我是学生"));
+        System.out.println(studentDao.queryByStudentName("stu3"));
     }
 
 }
