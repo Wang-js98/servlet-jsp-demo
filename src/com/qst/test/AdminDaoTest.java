@@ -13,7 +13,33 @@ public class AdminDaoTest {
     @Test
     public void addAdmin() {
 
-        adminDao.addAdmin(new User(null,"我是管理员","123456",3,1,new Date()
-));
+        adminDao.addAdmin(new User(null,"我是管理员","123456",3,1,new Date()));
+    }
+
+
+    @Test
+    public void queryStudents() {
+        for (User queryStudent:adminDao.queryStudents()){
+            System.out.println(queryStudent);
+        }
+    }
+
+
+    @Test
+    public void queryTeachers() {
+        for (User queryTeachers:adminDao.queryTeachers()){
+            System.out.println(queryTeachers);
+        }
+    }
+
+    @Test
+    public void queryAdmins() {
+        for (User queryAdmins:adminDao.queryAdmins()){
+            System.out.println(queryAdmins);
+        }
+    }
+    @Test
+    public void queryUserByUserName() {
+        System.out.println(adminDao.queryByUsername("stu1"));
     }
 }
