@@ -1,0 +1,84 @@
+#div1{
+	    width: 100vw;  /* vw：1vw等于视口宽度的1%
+		                  vh：1vh等于视口高度的1% */
+	    height: 100vh;
+	    display: flex;
+}
+#left{  /* 左侧区域 */
+	width: 200px;
+	height: 100%;
+	overflow-y: auto;
+	background-color: #424242;
+	padding: 0;
+	position: fixed;
+	top: 50.6px;
+	bottom: 0;
+	
+}
+#right{  /* 右侧区域 */
+	flex: 1 ;
+	height: 100%;
+	overflow-y: scroll;  /* 如果溢出框，则应该提供滚动机制。*/
+	background-color: #eeeeee;
+	
+	margin-left: 200px;
+    top: 50.6px;
+    right: 0;
+    bottom: 0;
+}
+#top{  /* 顶部区域 */
+	width: 100%;
+	
+}
+#span1{
+	font-size: 20px;
+	
+}
+#font1{  /* 导航条标题:学生信息管理系统 */
+	color: white;
+	line-height: 50px;  //高度设置与父级div相同实现垂直居中
+}
+body { padding-top: 50px; }
+
+
+.lf-bar{
+	width: 100%;
+	height: 50px;
+	display: table;
+	text-align: center;
+}
+.lf-bar a{
+	font-size: 15px;
+	display:table-cell;
+	vertical-align:middle;
+	
+}
+.lf-bar a font{
+	color: white;
+	
+}
+.lf-bar a font:hover{
+	color: #848484;
+	
+}
+.lf-bar a:hover {  /* 指针悬停a标签 */
+	text-decoration: none;  /* 去掉下划线 */
+ 
+}
+
+#btng1{
+	position: absolute;
+	right: 10px;
+	margin-top: 8px;
+}
+
+.right-group {
+	margin-right: 50px;
+	margin-left: 50px;
+}
+
+#rig1{
+	height: 40px;
+	
+}
+

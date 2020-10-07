@@ -1,0 +1,23 @@
+#include-form{  /* 包含表单的div */
+	width: 350px;
+	height: 260px;
+	 /* margin: 0 auto; */
+	margin-top: 15%;
+	margin-left: 72%;
+	
+}
+
+#form-title {  /* 表单标题 */
+	text-align: center;
+	font-size: 25px;
+}
+#form-title font{  
+	color: #1B6D85;
+	
+}
+.form-control {  /* 表单 */
+	width: 85%;
+}
+body{  /* 页面整体 */
+	background-image: url(../img/login-bg.jpg);
+}
