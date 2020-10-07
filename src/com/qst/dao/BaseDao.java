@@ -15,7 +15,8 @@ public abstract class BaseDao {
     //使用Dbutils导包
     private QueryRunner queryRunner=new QueryRunner();
 
-    /*update方法用来执行Insert\Update\Delete语句
+    /**
+    update方法用来执行Insert\Update\Delete语句
     @return如果返回-1，说明执行失败。返回其它表示影响的函数
 
 
@@ -35,7 +36,7 @@ public abstract class BaseDao {
 
 
 
-    /*
+    /**
     查询返回一个javabean的sql语句
     @param type 返回的对象类型
     @param sql 执行的sql语句
@@ -58,7 +59,7 @@ public abstract class BaseDao {
     }
 
 
-    /*
+    /**
     查询返回多个javabean的sql语句
     @param type 返回的对象类型
     @param sql 执行的sql语句
@@ -80,7 +81,7 @@ public abstract class BaseDao {
     }
 
 
-    /*
+    /**
     执行返回一行一列的sql语句
     @param sql 执行的sql语句
     @param args sql对应的参数值

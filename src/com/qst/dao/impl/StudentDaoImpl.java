@@ -3,7 +3,6 @@ package com.qst.dao.impl;
 import com.qst.dao.BaseDao;
 import com.qst.dao.StudentDao;
 import com.qst.pojo.Student;
-import com.qst.pojo.Teacher;
 import com.qst.pojo.User;
 
 import java.util.List;
