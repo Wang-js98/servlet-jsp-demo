@@ -17,12 +17,17 @@ public class AdminServiceTest {
     }
 
     @Test
+    public void queryUsers() {
+        for (User queryUsers:adminService.queryUsers()){
+            System.out.println(queryUsers);
+        }
+    }
+    @Test
     public void queryStudents() {
         for (User queryStudent:adminService.queryStudents()){
             System.out.println(queryStudent);
         }
     }
-
 
     @Test
     public void queryTeachers() {
@@ -38,7 +43,7 @@ public class AdminServiceTest {
         }
     }
     @Test
-    public void queryUserByUserName() {
+    public void queryByUsername() {
         System.out.println(adminService.queryByUsername("我是学生"));
     }
 

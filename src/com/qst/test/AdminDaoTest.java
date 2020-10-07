@@ -6,6 +6,7 @@ import com.qst.pojo.User;
 import org.junit.Test;
 
 import java.util.Date;
+import java.util.List;
 
 public class AdminDaoTest {
 
@@ -41,5 +42,13 @@ public class AdminDaoTest {
     @Test
     public void queryUserByUserName() {
         System.out.println(adminDao.queryByUsername("stu1"));
+    }
+
+
+    @Test
+    public void queryUsers() {
+        for (User queryUsers:adminDao.queryUsers()){
+            System.out.println(queryUsers);
+        }
     }
 }

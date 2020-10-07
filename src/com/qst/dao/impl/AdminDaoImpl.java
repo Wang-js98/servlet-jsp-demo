@@ -15,6 +15,12 @@ public class AdminDaoImpl extends BaseDao implements AdminDao {
     }
 
     @Override
+    public List<User> queryUsers() {
+        String sql="select userId,userName,password,userType,status,createTime from user";
+        return queryForList(User.class,sql);
+    }
+
+    @Override
     public List<User> queryStudents() {
         String sql="select userId,userName,password,userType,status,createTime from user WHERE userType=1";
         return queryForList(User.class,sql);

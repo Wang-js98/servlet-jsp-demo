@@ -21,6 +21,25 @@ public class TeacherDaoTest {
 
     @Test
     public void addTeacher() {
-        teacherDao.addTeacher(new Teacher(null,"我是老师","王五",40,1,"研究生",1));
+        teacherDao.addTeacher(new Teacher(null,"我是老师","王五",40,1,"本科",1));
+    }
+
+    @Test
+    public void queryByTeacherName() {
+        System.out.println(teacherDao.queryByTeacherName("tea1"));
+    }
+
+
+    @Test
+    public void queryTeachers() {
+        for (Teacher queryTeachers:teacherDao.queryTeachers()){
+            System.out.println(queryTeachers);
+        }
+    }
+    @Test
+    public void queryTeachersByEducation() {
+        for (Teacher queryTeachersByEducation:teacherDao.queryTeachersByEducation("本科")){
+            System.out.println(queryTeachersByEducation);
+        }
     }
 }

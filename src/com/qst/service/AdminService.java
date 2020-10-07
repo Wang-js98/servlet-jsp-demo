@@ -7,6 +7,8 @@ import java.util.List;
 public interface AdminService {
     //添加用户
     public void addAdmin(User user);
+    //查询所有用户
+    public List<User> queryUsers();
     //查询所有学生
     public List<User> queryStudents();
     //查询所有老师
