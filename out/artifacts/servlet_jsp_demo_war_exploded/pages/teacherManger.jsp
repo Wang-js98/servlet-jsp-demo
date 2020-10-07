@@ -1,11 +1,11 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+${pageContext.request.contextPath}
 <html>
 	<head>
 		<meta charset="utf-8">
-		<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css"/>
-		<link rel="stylesheet" type="text/css" href="../css/threebar.css"/>
-		<link rel="stylesheet" type="text/css" href="../css/index.css"/>
-		<link rel="stylesheet" type="text/css" href="../css/teacherManger.css"/>
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/threebar.css"/>
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/index.css"/>
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/teacherManger.css"/>
 		<title></title>
 		
 	</head>
@@ -135,8 +135,8 @@
 		</div>
 		
 		<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
-		<script src="../js/jquery-3.2.1.min.js"></script>
+		<script src="${pageContext.request.contextPath}/js/jquery-3.2.1.min.js"></script>
 		<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
-		<script src="../js/bootstrap.min.js"></script>
+		<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 	</body>
 </html>

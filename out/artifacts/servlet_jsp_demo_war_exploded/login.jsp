@@ -17,26 +17,22 @@
 <div id="include-form">
     <h1 id="form-title"><font>学生信息管理系统</font></h1>
     <br />
-    <form class="form-horizontal">
+    <form class="form-horizontal" action="login" method="post">
         <div class="form-group">
             <label for="inputEmail3" class="col-sm-2 control-label">账号</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputEmail3" placeholder="账号">
+                <input type="text"  name="userName" class="form-control" id="inputEmail3" placeholder="账号">
             </div>
         </div>
         <div class="form-group">
             <label for="inputPassword3" class="col-sm-2 control-label">密码</label>
             <div class="col-sm-10">
-                <input type="password" class="form-control" id="inputPassword3" placeholder="密码">
+                <input type="password" name="password" class="form-control" id="inputPassword3" placeholder="密码">
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox"> 记住我
-                    </label>
-                </div>
+                ${requestScope.loginmsg}
             </div>
         </div>
         <div class="form-group">
