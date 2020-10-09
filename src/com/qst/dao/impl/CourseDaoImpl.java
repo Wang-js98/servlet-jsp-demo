@@ -25,4 +25,15 @@ public class CourseDaoImpl extends BaseDao implements CourseDao {
         String sql="select course_id,c_name,description,createTime from course WHERE c_name=?";
         return queryForOne(Course.class,sql,c_name);
     }
+    @Override
+    public int deleteCourseById(Integer course_id) {
+        String sql="delete from course where course_id=?";
+        return update(sql,course_id);
+    }
+
+    @Override
+    public int updateCourse(Course course) {
+        String sql="update course set `c_name`=?,`description`=?,`createTime`=? where course_id=?";
+        return update(sql,course.getC_name(),course.getDescription(),course.getCreateTime(),course.getCourse_id());
+    }
 }

@@ -11,4 +11,8 @@ public interface CourseDao {
     public List<Course> queryCourse();
     //根据课程名称查询
     public Course queryByCourseName(String c_name);
+    //根据课程id删除课程
+    public int deleteCourseById(Integer course_id) ;
+    //修改课程
+    public int updateCourse(Course course);
 }
