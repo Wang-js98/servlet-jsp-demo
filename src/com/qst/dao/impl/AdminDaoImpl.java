@@ -15,9 +15,11 @@ public class AdminDaoImpl extends BaseDao implements AdminDao {
     }
 
     @Override
-    public List<User> queryUsers() {
-        String sql="select userId,userName,password,userType,status,createTime from user";
-        return queryForList(User.class,sql);
+    public List<User> queryUsers(int pageNo, int pageSize) {
+        int dataNum =( pageNo-1)*pageSize;
+        String sql="select userId,userName,password,userType,status,createTime from user limit "+dataNum+","+pageSize;
+       return queryForList(User.class,sql);
+
     }
 
     @Override
@@ -48,6 +50,13 @@ public class AdminDaoImpl extends BaseDao implements AdminDao {
     public User queryByUsername(String userName) {
         String sql="select userId,userName,password,userType,status,createTime from user WHERE userName=?";
         return queryForOne(User.class,sql,userName);
+    }
+
+    @Override
+    public int selectCount(String table_name) {
+        String sql="SELECT COUNT(*) FROM "+table_name;
+        Number count= (Number) queryForSingleValue(sql);
+        return count.intValue();
     }
 
 

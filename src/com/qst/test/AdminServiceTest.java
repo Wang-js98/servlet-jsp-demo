@@ -16,12 +16,7 @@ public class AdminServiceTest {
         adminService.addAdmin(new User(null,"我是管理员","123456",3,1,new Date()));
     }
 
-    @Test
-    public void queryUsers() {
-        for (User queryUsers:adminService.queryUsers()){
-            System.out.println(queryUsers);
-        }
-    }
+
     @Test
     public void queryStudents() {
         for (User queryStudent:adminService.queryStudents()){

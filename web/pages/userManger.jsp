@@ -1,11 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 	<head>
 		<meta charset="utf-8">
-		<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css"/>
-		<link rel="stylesheet" type="text/css" href="../css/threebar.css"/>
-		<link rel="stylesheet" type="text/css" href="../css/index.css"/>
-		<link rel="stylesheet" type="text/css" href="../css/userManger.css"/>
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/threebar.css"/>
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/index.css"/>
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/userManger.css"/>
 		<title></title>
 		
 	</head>
@@ -83,23 +84,41 @@
 						 <th>创建时间</th>
 						 <th>操作</th>
 					 </tr>
-					 <tr>
-						 <td></td>
-						 <td></td>
-						 <td></td>
-						 <td> <a href="#" class="btn btn-default btn-sm active" role="button">切换</a></td>
-						 <td></td>
-						 <td> <a href="#" class="btn btn-danger btn-sm active" role="button">删除</a></td>
-					 </tr>
+					   <c:forEach var="user"   items="${result.data}"  >
+						   <tr>
+							   <td>${user.userId}</td>
+							   <td>${user.userName}</td>
+							   <td>${user.userType}</td>
+							   <td>
+								<c:if test="${user.status == 1}"> 启用</c:if>
+								<c:if test="${user.status == 0}"> 禁用</c:if>
+								   <a href="#" class="btn btn-default btn-sm active" role="button">切换</a>
+							   </td>
+							   <td>${user.creatTime}</td>
+							   <td> <a href="#" class="btn btn-danger btn-sm active" role="button">删除</a></td>
+						   </tr>
+					   </c:forEach>
+
 				   </table>
+				   <br> 共${result.pageCount }页  当前第${result.currentPage }页
+				   <c:if test="${result.currentPage != 1}">
+				     <a href="changePage?pageNo=1" >首页</a>
+					 <a href="changePage?pageNo=${result.currentPage-1 }" >上一页</a>
+				   </c:if>
+
+
+                   <c:if test="${result.currentPage != result.pageCount}">
+					 <a href="changePage?pageNo=${result.currentPage+1 }" >下一页</a>
+				     <a href="changePage?pageNo=${result.pageCount }" >尾页</a>
+                   </c:if>
 			   </div>
 			   
 		  </div>
 		</div>
 		
 		<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
-		<script src="../js/jquery-3.2.1.min.js"></script>
+		<script src="${pageContext.request.contextPath}/js/jquery-3.2.1.min.js"></script>
 		<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
-		<script src="../js/bootstrap.min.js"></script>
+		<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 	</body>
 </html>

@@ -1,5 +1,6 @@
 package com.qst.service;
 
+import com.qst.pojo.Page;
 import com.qst.pojo.User;
 
 import java.util.List;
@@ -7,8 +8,8 @@ import java.util.List;
 public interface AdminService {
     //添加用户
     public void addAdmin(User user);
-    //查询所有用户
-    public List<User> queryUsers();
+    //分页查询所有用户
+    public Page<User> queryUsers(int pageNo, int pageSize);
     //查询所有学生
     public List<User> queryStudents();
     //查询所有老师
