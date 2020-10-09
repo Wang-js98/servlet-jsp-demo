@@ -70,7 +70,7 @@
 					<th>创建时间</th>
 					<th>操作</th>
 				</tr>
-				<c:forEach items="${requestScope.courses}" var="courses">
+				<c:forEach items="${requestScope.courses.data}" var="courses">
 				<tr>
 
 					<td>${courses.course_id}</td>
@@ -112,6 +112,17 @@
 					</div>
 				</div>
 			</table>
+			<br> 共${courses.pageCount }页  当前第${courses.currentPage }页
+			<c:if test="${courses.currentPage != 1}">
+				<a href="courseServlet?action=pageCourse&pageNo=1" >首页</a>
+				<a href="courseServlet?action=pageCourse&pageNo=${courses.currentPage-1 }" >上一页</a>
+			</c:if>
+
+
+			<c:if test="${courses.currentPage != courses.pageCount}">
+				<a href="courseServlet?action=pageCourse&pageNo=${courses.currentPage+1 }" >下一页</a>
+				<a href="courseServlet?action=pageCourse&pageNo=${courses.pageCount }" >尾页</a>
+			</c:if>
 		</div>
 
 	</div>

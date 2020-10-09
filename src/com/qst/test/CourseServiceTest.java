@@ -7,6 +7,7 @@ import com.qst.service.impl.CourseServiceImpl;
 import org.junit.Test;
 
 import java.util.Date;
+import java.util.List;
 
 
 public class CourseServiceTest {
@@ -19,10 +20,9 @@ public class CourseServiceTest {
 
     @Test
     public void queryCourse() {
-        for (Course queryCourse:courseService.queryCourse()){
-            System.out.println(queryCourse);
-        }
+
     }
+
     @Test
     public void queryByCourseName() {
         System.out.println(courseService.queryByCourseName("物理"));

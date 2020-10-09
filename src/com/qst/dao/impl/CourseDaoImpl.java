@@ -15,8 +15,9 @@ public class CourseDaoImpl extends BaseDao implements CourseDao {
     }
 
     @Override
-    public List<Course> queryCourse() {
-        String sql="select course_id,c_name,description,createTime from course";
+    public List<Course> queryCourse(int pageNo, int pageSize) {
+        int dataNum =( pageNo-1)*pageSize;
+        String sql="select course_id,c_name,description,createTime from course limit "+dataNum+","+pageSize;
         return queryForList(Course.class,sql);
     }
 
@@ -35,5 +36,12 @@ public class CourseDaoImpl extends BaseDao implements CourseDao {
     public int updateCourse(Course course) {
         String sql="update course set `c_name`=?,`description`=?,`createTime`=? where course_id=?";
         return update(sql,course.getC_name(),course.getDescription(),course.getCreateTime(),course.getCourse_id());
+    }
+
+    @Override
+    public int selectCount(String table_name) {
+        String sql="SELECT COUNT(*) FROM "+table_name;
+        Number count= (Number) queryForSingleValue(sql);
+        return count.intValue();
     }
 }

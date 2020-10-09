@@ -14,12 +14,12 @@ public class CourseDaoTest {
     private CourseDao courseDao=new CourseDaoImpl();
     @Test
     public void addCourse() {
-        courseDao.addCourse(new Course(null,"物理","万有引力",new Date()));
+        courseDao.addCourse(new Course(null,"数学","1+1=2",new Date()));
     }
 
     @Test
     public void queryCourse() {
-        for (Course queryCourse:courseDao.queryCourse()){
+        for (Course queryCourse:courseDao.queryCourse(1,2)){
             System.out.println(queryCourse);
         }
     }

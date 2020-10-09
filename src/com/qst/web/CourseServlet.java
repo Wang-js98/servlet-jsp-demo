@@ -1,6 +1,8 @@
 package com.qst.web;
 
 import com.qst.pojo.Course;
+import com.qst.pojo.Page;
+import com.qst.pojo.User;
 import com.qst.service.CourseService;
 import com.qst.service.impl.CourseServiceImpl;
 import com.qst.utils.WebUtils;
@@ -18,7 +20,7 @@ public class CourseServlet extends BaseServlet{
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doPost(req,resp);
     }
-    protected void CourseList(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+   /* protected void CourseList(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //通过CourseService查询全部课程
         List<Course> courses=courseService.queryCourse();
         //把全部图书保存到request域当中
@@ -27,7 +29,7 @@ public class CourseServlet extends BaseServlet{
         //请求转发到/manager/bookServlet?action=list界面
         req.getRequestDispatcher("/pages/courseManger.jsp").forward(req,resp);
 
-    }
+    }*/
 
     protected void deleteCourseById(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //1.获取请求参数图书的id，图书编程
@@ -58,7 +60,6 @@ public class CourseServlet extends BaseServlet{
         }
     }
 
-
     protected void updateCourse(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //获取要修改的课程
         Course course=WebUtils.copyParamToBean(req.getParameterMap(),new Course());
@@ -69,5 +70,13 @@ public class CourseServlet extends BaseServlet{
         req.getRequestDispatcher("/courseServlet?action=CourseList").forward(req,resp);
     }
 
+    protected void pageCourse(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int pageNo = Integer.parseInt(req.getParameter("pageNo"));
+        Page<Course> courses = courseService.queryCourse(pageNo, 5);
+        req.setAttribute("courses",courses);
+
+        //跳转到用户管理页面
+        req.getRequestDispatcher("/pages/courseManger.jsp").forward(req, resp);
+    }
 
 }

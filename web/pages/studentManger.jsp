@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 	<head>
@@ -69,11 +70,14 @@
 						 <th>性别</th>
 						 <th>成绩管理</th>
 					 </tr>
+
 					 <tr>
-						 <td></td>
-						 <td></td>
-						 <td></td>
-						 <td> </td>
+                         <c:forEach items="${requestScope.students}" var="students">
+						 <td>${students.s_id}</td>
+						 <td>${students.s_name}</td>
+						 <td>${students.age}</td>
+						 <td>${students.sex}</td>
+                          </c:forEach>
 						 <td> 
 						 
 						 <!-- Large modal -->

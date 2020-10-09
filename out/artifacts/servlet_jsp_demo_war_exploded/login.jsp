@@ -11,7 +11,7 @@
 
     <link rel="stylesheet" type="text/css" media="all" href="css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" media="all" href="css/login.css" />
-    <title>Title</title>
+    <title>学生信息管理系统</title>
 </head>
 <body>
 <div id="include-form">

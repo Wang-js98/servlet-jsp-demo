@@ -47,4 +47,17 @@
         <servlet-name>CourseServlet</servlet-name>
         <url-pattern>/courseServlet</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>StudentServlet</servlet-name>
+        <servlet-class>com.qst.web.StudentServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>StudentServlet</servlet-name>
+        <url-pattern>/studentServlet</url-pattern>
+    </servlet-mapping>
+
+
+
+
 </web-app>
