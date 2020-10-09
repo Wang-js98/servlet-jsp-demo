@@ -70,9 +70,9 @@
 					<th>创建时间</th>
 					<th>操作</th>
 				</tr>
-
+				<c:forEach items="${requestScope.courses}" var="courses">
 				<tr>
-					<c:forEach items="${requestScope.courses}" var="courses">
+
 					<td>${courses.course_id}</td>
 					<td>${courses.c_name}</td>
 					<td>${courses.description}</td>
@@ -83,32 +83,34 @@
 						<!-- Large modal -->
 						<button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">编辑</button>
 
-						<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-							<div class="modal-dialog modal-lg" role="document">
-								<div class="modal-content">
-									<h2>课程管理</h2>
-									<form>
-										<div class="form-group">
-											<label for="inputEmail3" class="col-sm-2 control-label">课程名称</label>
-											<div class="col-sm-10">
-												<input type="text" value="${courses.c_name}" class="form-control" id="inputEmail3" >
-											</div>
-										</div>
-										<br /><br /><br />
-										<div class="form-group">
-											<label for="inputPassword3" class="col-sm-2 control-label">课程备注</label>
-											<div class="col-sm-10">
-												<textarea class="form-control" rows="3">${courses.description}</textarea>
-											</div>
-										</div><br /><br /><br /><br />
-										<button type="submit" class="btn btn-primary btn-xs btn-block">保存</button>
-									</form>
-								</div>
-							</div>
-						</div>
+
 					</td>
 				</tr>
 				</c:forEach>
+				<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="myModal">
+					<div class="modal-dialog modal-lg" role="document">
+						<div class="modal-content">
+							<h2>课程管理</h2>
+							<form>
+								<input type="hidden" id="hidden1" name="course_id">
+								<div class="form-group">
+									<label for="inputEmail3" class="col-sm-2 control-label">课程名称</label>
+									<div class="col-sm-10">
+										<input type="text" value="" name="c_name" class="form-control" id="c_name" >
+									</div>
+								</div>
+								<br /><br /><br />
+								<div class="form-group">
+									<label for="inputEmail3" class="col-sm-2 control-label">课程备注</label>
+									<div class="col-sm-10">
+										<textarea class="form-control" rows="3" id="description" name="description"></textarea>
+									</div>
+								</div><br /><br /><br /><br />
+								<button type="submit" class="btn btn-primary btn-xs btn-block" >保存</button>
+							</form>
+						</div>
+					</div>
+				</div>
 			</table>
 		</div>
 
@@ -119,5 +121,17 @@
 <script src="js/jquery-3.2.1.min.js"></script>
 <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
 <script src="js/bootstrap.min.js"></script>
+<script>
+	$('#myModal').on('show.bs.modal', function (e) {
+		var btnThis = $(e.relatedTarget); //触发事件的按钮
+		var modal = $(this);  //当前模态框
+		var c_id = btnThis.closest('tr').find('td').eq(0).text();  //获取tr下第一个td的值(id)
+		var c_name = btnThis.closest('tr').find('td').eq(1).text();//获取tr下第二个td的值(name)
+		var description = btnThis.closest('tr').find('td').eq(2).text();//获取tr下第三个td的值(description)
+		modal.find('#description').val(description); //给模态框中的元素赋值
+		modal.find('#c_name').val(c_name);
+		modal.find('#hidden1').val(c_id);
+	})
+</script>
 </body>
 </html>

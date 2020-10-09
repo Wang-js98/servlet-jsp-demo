@@ -38,4 +38,13 @@
         <url-pattern>/changePage</url-pattern>
     </servlet-mapping>
 
+
+    <servlet>
+        <servlet-name>CourseServlet</servlet-name>
+        <servlet-class>com.qst.web.CourseServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CourseServlet</servlet-name>
+        <url-pattern>/courseServlet</url-pattern>
+    </servlet-mapping>
 </web-app>

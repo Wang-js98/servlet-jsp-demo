@@ -5,9 +5,28 @@
   Time: 16:00
   To change this template use File | Settings | File Templates.
 --%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
+<%--动态获取base--%>
+<%
+    String basePath=request.getScheme()
+            +"://"
+            +request.getServerName()
+            +":"
+            +request.getServerPort()
+            +request.getContextPath()
+            +"/";
+
+    pageContext.setAttribute("basePath",basePath);
+
+
+%>
+
+<!--写base路径永远固定相对路径跳转问题-->
+<base href=" <%=basePath%>">
 <head>
+
     <title>Title</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/threebar.css"/>
@@ -38,7 +57,7 @@
         <div class="lf-bar"><a><font>用户管理</font></a></div>
         <div class="lf-bar"><a><font>教师管理</font></a></div>
         <div class="lf-bar"><a><font>学生管理</font></a></div>
-        <div class="lf-bar"><a><font>课程管理</font></a></div>
+        <div class="lf-bar"><a href="courseServlet?action=CourseList"><font>课程管理</font></a></div>
         <div class="lf-bar"><a><font>班级管理</font></a></div>
 
     </div>
