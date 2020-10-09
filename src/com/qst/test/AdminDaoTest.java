@@ -45,10 +45,5 @@ public class AdminDaoTest {
     }
 
 
-    @Test
-    public void queryUsers() {
-        for (User queryUsers:adminDao.queryUsers()){
-            System.out.println(queryUsers);
-        }
-    }
+
 }

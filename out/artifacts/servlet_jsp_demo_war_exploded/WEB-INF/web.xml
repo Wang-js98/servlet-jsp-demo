@@ -20,4 +20,22 @@
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
 
+<!--  跳到用户管理页  -->
+    <servlet>
+        <servlet-name>toUserManger</servlet-name>
+        <servlet-class>com.qst.controller.jump.ToUserManger</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>toUserManger</servlet-name>
+        <url-pattern>/toUserManger</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>changePage</servlet-name>
+        <servlet-class>com.qst.controller.UserPagecontroller</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>changePage</servlet-name>
+        <url-pattern>/changePage</url-pattern>
+    </servlet-mapping>
+
 </web-app>

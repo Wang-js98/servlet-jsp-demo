@@ -30,8 +30,8 @@ public class LoginController extends HttpServlet {
             req.getRequestDispatcher("login.jsp").forward(req, resp);
         }else{
             HttpSession session = req.getSession();
-            session.setAttribute("userName", name);
-            session.setAttribute("password", pwd);
+            session.setAttribute("user", user);
+
           if(user.getUserType()==3){
               req.getRequestDispatcher("pages/index-admin.jsp").forward(req, resp);
           }else if(user.getUserType()==2){

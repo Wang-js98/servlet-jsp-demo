@@ -8,7 +8,7 @@ public interface AdminDao {
     //添加管理员
     public int addAdmin(User user) ;
     //查询所有用户
-    public List<User> queryUsers();
+    public List<User> queryUsers(int pageNo, int pageSize);
     //查询所有学生
     public List<User> queryStudents();
     //查询所有老师
@@ -20,4 +20,6 @@ public interface AdminDao {
     //根据用户名查询
     public User queryByUsername(String userName);
 
+    //查询指定表字段总数
+    public int selectCount(String table_name);
 }

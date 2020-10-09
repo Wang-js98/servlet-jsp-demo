@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -83,15 +84,33 @@
 						 <th>创建时间</th>
 						 <th>操作</th>
 					 </tr>
-					 <tr>
-						 <td></td>
-						 <td></td>
-						 <td></td>
-						 <td> <a href="#" class="btn btn-default btn-sm active" role="button">切换</a></td>
-						 <td></td>
-						 <td> <a href="#" class="btn btn-danger btn-sm active" role="button">删除</a></td>
-					 </tr>
+					   <c:forEach var="user"   items="${result.data}"  >
+						   <tr>
+							   <td>${user.userId}</td>
+							   <td>${user.userName}</td>
+							   <td>${user.userType}</td>
+							   <td>
+								<c:if test="${user.status == 1}"> 启用</c:if>
+								<c:if test="${user.status == 0}"> 禁用</c:if>
+								   <a href="#" class="btn btn-default btn-sm active" role="button">切换</a>
+							   </td>
+							   <td>${user.creatTime}</td>
+							   <td> <a href="#" class="btn btn-danger btn-sm active" role="button">删除</a></td>
+						   </tr>
+					   </c:forEach>
+
 				   </table>
+				   <br> 共${result.pageCount }页  当前第${result.currentPage }页
+				   <c:if test="${result.currentPage != 1}">
+				     <a href="changePage?pageNo=1" >首页</a>
+					 <a href="changePage?pageNo=${result.currentPage-1 }" >上一页</a>
+				   </c:if>
+
+
+                   <c:if test="${result.currentPage != result.pageCount}">
+					 <a href="changePage?pageNo=${result.currentPage+1 }" >下一页</a>
+				     <a href="changePage?pageNo=${result.pageCount }" >尾页</a>
+                   </c:if>
 			   </div>
 			   
 		  </div>
