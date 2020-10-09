@@ -18,8 +18,6 @@ public abstract class BaseDao {
     /**
     update方法用来执行Insert\Update\Delete语句
     @return如果返回-1，说明执行失败。返回其它表示影响的函数
-
-
     */
 
     public int update(String sql,Object... args){

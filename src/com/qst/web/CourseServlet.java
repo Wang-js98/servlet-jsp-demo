@@ -57,4 +57,17 @@ public class CourseServlet extends BaseServlet{
             req.getRequestDispatcher("/pages/courseManger.jsp").forward(req,resp);
         }
     }
+
+
+    protected void updateCourse(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //获取要修改的课程
+        Course course=WebUtils.copyParamToBean(req.getParameterMap(),new Course());
+
+        //调用修改课程的方法
+        courseService.updateCourse(course);
+        //请求转发到/pages/courseManger.jsp
+        req.getRequestDispatcher("/courseServlet?action=CourseList").forward(req,resp);
+    }
+
+
 }

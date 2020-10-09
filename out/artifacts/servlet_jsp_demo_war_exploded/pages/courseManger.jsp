@@ -91,7 +91,7 @@
 					<div class="modal-dialog modal-lg" role="document">
 						<div class="modal-content">
 							<h2>课程管理</h2>
-							<form>
+							<form action="courseServlet?action=updateCourse" method="post">
 								<input type="hidden" id="hidden1" name="course_id">
 								<div class="form-group">
 									<label for="inputEmail3" class="col-sm-2 control-label">课程名称</label>
