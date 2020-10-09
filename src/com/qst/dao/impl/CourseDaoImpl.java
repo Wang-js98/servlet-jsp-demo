@@ -21,9 +21,9 @@ public class CourseDaoImpl extends BaseDao implements CourseDao {
     }
 
     @Override
-    public Course queryByCourseName(String c_name) {
+    public List<Course> queryByCourseName(String c_name) {
         String sql="select course_id,c_name,description,createTime from course WHERE c_name=?";
-        return queryForOne(Course.class,sql,c_name);
+        return queryForList(Course.class,sql,c_name);
     }
     @Override
     public int deleteCourseById(Integer course_id) {

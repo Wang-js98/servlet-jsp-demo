@@ -46,13 +46,13 @@
 		<br />
 		<div id="rig2" class="right-group">
 			<h2>搜索信息</h2>
-			<form>
+			<form action="courseServlet?action=CourseQueryByName" method="post">
 				<div class="input-group" id="input1">
 					<span class="input-group-addon" id="basic-addon1">课程名称</span>
-					<input type="text" class="form-control" placeholder="课程名称" aria-describedby="basic-addon1">
+					<input type="text" class="form-control" placeholder="课程名称" name="CourseName" aria-describedby="basic-addon1">
 				</div>
 
-				<input class="btn btn-default" type="submit" value="搜索">
+				<input class="btn btn-default" type="submit" value="搜索">${requestScope.msg}
 
 			</form>
 			<a href="#" class="btn btn-primary btn-sm active" role="button">添加课程</a>

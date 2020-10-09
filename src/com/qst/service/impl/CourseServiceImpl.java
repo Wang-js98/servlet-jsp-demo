@@ -21,7 +21,7 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public Course queryByCourseName(String c_name) {
+    public List<Course> queryByCourseName(String c_name) {
         return courseDao.queryByCourseName(c_name);
     }
     @Override

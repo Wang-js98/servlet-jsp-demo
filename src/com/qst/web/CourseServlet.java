@@ -38,4 +38,23 @@ public class CourseServlet extends BaseServlet{
         req.getRequestDispatcher("/courseServlet?action=CourseList").forward(req,resp);
     }
 
+    protected void CourseQueryByName(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        //获取要查询的课程名
+
+        String CourseName=req.getParameter("CourseName");
+        //通过CourseService查询全部课程
+        List<Course> courses=courseService.queryByCourseName(CourseName);
+        if(courses.size()==0){
+            //没有查到该课程
+            req.setAttribute("msg","该课程不存在!");
+            //请求转发到/pages/courseManger.jsp
+            req.getRequestDispatcher("/pages/courseManger.jsp").forward(req,resp);
+        }else{
+            //把全部图书保存到request域当中
+            req.setAttribute("courses",courses);
+            //请求转发到/pages/courseManger.jsp
+            req.getRequestDispatcher("/pages/courseManger.jsp").forward(req,resp);
+        }
+    }
 }
