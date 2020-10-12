@@ -79,7 +79,7 @@
 					 </tr>
 					   </c:forEach>
 				   </table>
-				   <br> 共${WorkPlans.pageCount }页  当前第${WorkPlans.currentPage }页
+				   <br> 共${WorkPlans.pageCount }页  当前第${requestScope.WorkPlans.currentPage}页
 				   <c:if test="${WorkPlans.currentPage != 1}">
 					   <a href="teacherActionServlet?action=WorkPlanPage&pageNo=1" >首页</a>
 					   <a href="teacherActionServlet?action=WorkPlanPage&pageNo=${WorkPlans.currentPage-1 }" >上一页</a>
@@ -87,9 +87,11 @@
 
 
 				   <c:if test="${WorkPlans.currentPage != WorkPlans.pageCount}">
-					   <a href="teacherActionServlet?action=WorkPlanPage&pageNo=${courses.currentPage+1 }" >下一页</a>
+					   <a href="teacherActionServlet?action=WorkPlanPage&pageNo=${WorkPlans.currentPage+1 }" >下一页</a>
 					   <a href="teacherActionServlet?action=WorkPlanPage&pageNo=${WorkPlans.pageCount }" >尾页</a>
 				   </c:if>
+
+
 			   </div>
 			   </div>
 			   

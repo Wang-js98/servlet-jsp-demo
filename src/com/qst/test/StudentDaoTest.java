@@ -16,7 +16,7 @@ public class StudentDaoTest {
     @Test
     public void addUser() {
 
-        studentDao.addUser(new User(null,"stu6","123456",1,1,new Date()
+        studentDao.addUser(new User(null,"stu9","123456",1,1,new Date()
         ));
 
     }
@@ -24,7 +24,7 @@ public class StudentDaoTest {
     @Test
     public void addStudent() {
 
-        studentDao.addStudent(new Student(null,"stu6","魏满满",22,1,"成绩优秀",new Date(),8
+        studentDao.addStudent(new Student(null,"stu9","魏满满",22,1,"成绩优秀",new Date(),8
         ));
     }
 

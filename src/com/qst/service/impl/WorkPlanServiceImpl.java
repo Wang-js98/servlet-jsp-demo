@@ -30,7 +30,7 @@ public class WorkPlanServiceImpl implements WorkPlanService {
         int pageCount = total % Page.PAGE_SIZE == 0 ?  //判断总页数
                 total / Page.PAGE_SIZE : total/ Page.PAGE_SIZE + 1;
         Page<WorkPlan> page = new Page<WorkPlan>();
-        page.setCurrentPage(1);
+        page.setCurrentPage(pageNo);
         page.setData(workPlanList1);
         page.setPageCount(pageCount);
         return page;
