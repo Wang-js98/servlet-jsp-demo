@@ -56,6 +56,14 @@
         <servlet-name>StudentServlet</servlet-name>
         <url-pattern>/studentServlet</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>ClassServlet</servlet-name>
+        <servlet-class>com.qst.web.ClassServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ClassServlet</servlet-name>
+        <url-pattern>/classServlet</url-pattern>
+    </servlet-mapping>
 
 
 

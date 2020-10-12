@@ -18,7 +18,7 @@ public class ClassRoomServiceTest {
 
     @Test
     public void queryClassRoom() {
-        for (ClassRoom queryClassRoom:classRoomDao.queryClassRoom()){
+        for (ClassRoom queryClassRoom:classRoomDao.queryClassRoom(2,5)){
             System.out.println(queryClassRoom);
         }
     }
@@ -26,5 +26,9 @@ public class ClassRoomServiceTest {
     @Test
     public void queryClassRoomByName() {
         classRoomDao.queryClassRoomByName("B软件171");
+    }
+    @Test
+    public void updateClassRoom() {
+        classRoomDao.updateClassRoom(new ClassRoom(1,"B软件171",new Date()));
     }
 }

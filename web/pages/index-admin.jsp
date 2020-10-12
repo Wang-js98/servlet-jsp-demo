@@ -58,7 +58,7 @@
         <div class="lf-bar"><a><font>教师管理</font></a></div>
         <div class="lf-bar"><a href="studentServlet?action=StudentList"><font>学生管理</font></a></div>
         <div class="lf-bar"><a href="courseServlet?action=pageCourse&pageNo=1"><font>课程管理</font></a></div>
-        <div class="lf-bar"><a><font>班级管理</font></a></div>
+        <div class="lf-bar"><a href="classServlet?action=pageClassRooms&pageNo=1"><font>班级管理</font></a></div>
 
     </div>
     <div id="right">

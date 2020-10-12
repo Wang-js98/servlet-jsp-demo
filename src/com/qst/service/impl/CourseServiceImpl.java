@@ -32,8 +32,18 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public List<Course> queryByCourseName(String c_name) {
-        return courseDao.queryByCourseName(c_name);
+    public Page<Course> queryByCourseName(String c_name) {
+        List<Course> courseList = courseDao.queryByCourseName(c_name);
+        int total = courseDao.selectCount("course");
+        int pageCount = total % Page.PAGE_SIZE == 0 ?  //判断总页数
+                total / Page.PAGE_SIZE : total/ Page.PAGE_SIZE + 1;
+
+        Page<Course> page = new Page<Course>();
+        page.setCurrentPage(1);
+        page.setData(courseList);
+        page.setPageCount(pageCount);
+        return page;
+
     }
     @Override
     public int deleteCourseById(Integer course_id) {

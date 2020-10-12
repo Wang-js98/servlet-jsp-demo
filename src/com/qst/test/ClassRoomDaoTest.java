@@ -18,7 +18,7 @@ public class ClassRoomDaoTest {
 
     @Test
     public void queryClassRoom() {
-        for (ClassRoom queryClassRoom:classRoomDao.queryClassRoom()){
+        for (ClassRoom queryClassRoom:classRoomDao.queryClassRoom(1,5)){
             System.out.println(queryClassRoom);
         }
     }

@@ -34,9 +34,9 @@
 	<div id="left">
 		<div class="lf-bar"><a><font>用户管理</font></a></div>
 		<div class="lf-bar"><a><font>教师管理</font></a></div>
-		<div class="lf-bar"><a><font>学生管理</font></a></div>
-		<div class="lf-bar"><a><font>课程管理</font></a></div>
-		<div class="lf-bar"><a><font>班级管理</font></a></div>
+		<div class="lf-bar"><a href="studentServlet?action=StudentList"><font>学生管理</font></a></div>
+		<div class="lf-bar"><a href="courseServlet?action=pageCourse&pageNo=1"><font>课程管理</font></a></div>
+		<div class="lf-bar"><a href="classServlet?action=pageClassRooms&pageNo=1"><font>班级管理</font></a></div>
 
 	</div>
 	<div id="right">
@@ -70,7 +70,7 @@
 					<th>创建时间</th>
 					<th>操作</th>
 				</tr>
-				<c:forEach items="${requestScope.courses.data}" var="courses">
+				<c:forEach items="${requestScope.courses.data}"  var="courses">
 				<tr>
 
 					<td>${courses.course_id}</td>
@@ -79,7 +79,7 @@
 					<td>${courses.createTime}</td>
 
 					<td>
-						<a href="courseServlet?action=deleteCourseById&id=${courses.course_id}" class="btn btn-danger btn-sm active" role="button">删除</a>
+						<a href="courseServlet?action=deleteCourseById&id=${courses.course_id}&pageNo=${requestScope.courses.pageCount}" class="btn btn-danger btn-sm active" role="button">删除</a>
 						<!-- Large modal -->
 						<button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">编辑</button>
 
@@ -91,8 +91,9 @@
 					<div class="modal-dialog modal-lg" role="document">
 						<div class="modal-content">
 							<h2>课程管理</h2>
-							<form action="courseServlet?action=updateCourse" method="post">
+							<form action="courseServlet?action=updateCourse&pageNo=${requestScope.courses.pageCount}" method="post">
 								<input type="hidden" id="hidden1" name="course_id">
+								<%--<input type="hidden" id="hidden2" name="createTime">--%>
 								<div class="form-group">
 									<label for="inputEmail3" class="col-sm-2 control-label">课程名称</label>
 									<div class="col-sm-10">
@@ -139,9 +140,11 @@
 		var c_id = btnThis.closest('tr').find('td').eq(0).text();  //获取tr下第一个td的值(id)
 		var c_name = btnThis.closest('tr').find('td').eq(1).text();//获取tr下第二个td的值(name)
 		var description = btnThis.closest('tr').find('td').eq(2).text();//获取tr下第三个td的值(description)
+		//var createTime = btnThis.closest('tr').find('td').eq(3).text();//获取tr下第三个td的值(createTime)
 		modal.find('#description').val(description); //给模态框中的元素赋值
 		modal.find('#c_name').val(c_name);
 		modal.find('#hidden1').val(c_id);
+		//modal.find('#hidden2').val(createTime);
 	})
 </script>
 </body>
