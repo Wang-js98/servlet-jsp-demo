@@ -1,6 +1,23 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
+<%--动态获取base--%>
+<%
+	String basePath=request.getScheme()
+			+"://"
+			+request.getServerName()
+			+":"
+			+request.getServerPort()
+			+request.getContextPath()
+			+"/";
+
+	pageContext.setAttribute("basePath",basePath);
+
+
+%>
+
+<!--写base路径永远固定相对路径跳转问题-->
+<base href=" <%=basePath%>">
 	<head>
 		<meta charset="utf-8">
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.min.css"/>
@@ -56,6 +73,7 @@
 			<input class="btn btn-default" type="submit" value="搜索">${requestScope.msg}
 			
 			</form>
+				  <a href="#" class="btn btn-primary btn-sm active" role="button">添加班级</a>
 			   </div>
 			   <br /><br />
 			 

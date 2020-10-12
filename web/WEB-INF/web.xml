@@ -65,6 +65,15 @@
         <url-pattern>/classServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>TeacherActionServlet</servlet-name>
+        <servlet-class>com.qst.web.TeacherActionServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TeacherActionServlet</servlet-name>
+        <url-pattern>/teacherActionServlet</url-pattern>
+    </servlet-mapping>
+
 
 
 

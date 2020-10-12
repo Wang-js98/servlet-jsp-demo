@@ -18,7 +18,7 @@ public class StudentServlet extends BaseServlet{
         doPost(req,resp);
     }
     protected void StudentList(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //通过CourseService查询全部课程
+
         List<Student> students=studentService.queryStudents();
         //把全部图书保存到request域当中
         req.setAttribute("students",students);

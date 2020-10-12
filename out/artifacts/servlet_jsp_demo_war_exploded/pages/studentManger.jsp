@@ -1,6 +1,23 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
+<%--动态获取base--%>
+<%
+	String basePath=request.getScheme()
+			+"://"
+			+request.getServerName()
+			+":"
+			+request.getServerPort()
+			+request.getContextPath()
+			+"/";
+
+	pageContext.setAttribute("basePath",basePath);
+
+
+%>
+
+<!--写base路径永远固定相对路径跳转问题-->
+<base href=" <%=basePath%>">
 	<head>
 		<meta charset="utf-8">
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.min.css"/>
@@ -70,19 +87,19 @@
 						 <th>性别</th>
 						 <th>成绩管理</th>
 					 </tr>
-
+					   <c:forEach items="${requestScope.students}" var="students">
 					 <tr>
-                         <c:forEach items="${requestScope.students}" var="students">
+
 						 <td>${students.s_id}</td>
 						 <td>${students.s_name}</td>
 						 <td>${students.age}</td>
 						 <td>${students.sex}</td>
-                          </c:forEach>
+
 						 <td> 
 						 
 						 <!-- Large modal -->
 						 <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">成绩管理</button>
-						 
+
 						 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
 						   <div class="modal-dialog modal-lg" role="document">
 						     <div class="modal-content">
@@ -109,6 +126,7 @@
 						 </div>
 						 </td>
 					 </tr>
+					   </c:forEach>
 				   </table>
 			   </div>
 			   

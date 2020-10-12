@@ -7,6 +7,22 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
+<%
+    String basePath=request.getScheme()
+            +"://"
+            +request.getServerName()
+            +":"
+            +request.getServerPort()
+            +request.getContextPath()
+            +"/";
+
+    pageContext.setAttribute("basePath",basePath);
+
+
+%>
+
+<!--写base路径永远固定相对路径跳转问题-->
+<base href=" <%=basePath%>">
 <head>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/threebar.css"/>
@@ -36,8 +52,8 @@
 
     <div id="left">
 
-        <div class="lf-bar"><a><font>工作安排</font></a></div>
-        <div class="lf-bar"><a><font>学生信息</font></a></div>
+        <div class="lf-bar"><a href="teacherActionServlet?action=WorkPlanPage&pageNo=1"><font>工作安排</font></a></div>
+        <div class="lf-bar"><a href=""><font>学生信息</font></a></div>
 
 
     </div>
