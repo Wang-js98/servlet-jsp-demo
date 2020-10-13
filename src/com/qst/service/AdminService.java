@@ -3,6 +3,7 @@ package com.qst.service;
 import com.qst.pojo.Page;
 import com.qst.pojo.User;
 
+import javax.crypto.interfaces.PBEKey;
 import java.util.List;
 
 public interface AdminService {
@@ -25,4 +26,10 @@ public interface AdminService {
     public int deleteAdminId(int userId);
 
     public List<User> queryUserByTag(String userName,int userType);
+
+    //更新用户名
+    public void updateUserName(String userName,int userId);
+
+    //更新密码
+    public void updatePwd(String password,int userId);
 }

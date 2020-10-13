@@ -15,6 +15,7 @@ public class ClassRoomServiceImpl implements ClassRoomService {
     ClassRoomDao classRoomDao=new ClassRoomDaoImpl();
     @Override
     public int addClassRoom(ClassRoom classRoom) {
+
         return classRoomDao.addClassRoom(classRoom);
     }
 

@@ -30,4 +30,10 @@ public interface AdminDao {
 
     //改变用户状态
     public int changeStatus(int status,int userId);
+
+    //更新用户名
+    public int updateUserName(String userName,int userId);
+
+    //修改密码
+    public int updatePwd(String password,int userId);
 }

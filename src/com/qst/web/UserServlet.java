@@ -16,7 +16,9 @@ import com.qst.utils.WebUtils;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 public class UserServlet extends BaseServlet {
@@ -101,6 +103,43 @@ public class UserServlet extends BaseServlet {
         tea.setEducation(education);
        teacherService.addTeacher(user,tea);
         req.getRequestDispatcher("/toUserManger").forward(req,resp);
+    }
+
+
+    protected void updateUserName(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        String userName = req.getParameter("userName");
+       int userId= Integer.parseInt(req.getParameter("userId"));
+        adminService.updateUserName(userName,userId);
+        User user=adminService.queryByUsername(userName);
+        HttpSession session = req.getSession();
+        session.setAttribute("user", user);
+        req.getRequestDispatcher("/toUserManger").forward(req, resp);
+    }
+    protected void updatePwd(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession();
+        User user= (User) session.getAttribute("user");
+        String oldPwd=req.getParameter("oldPwd");
+        String newPwd=req.getParameter("newPwd");
+        String confirmPwd=req.getParameter("confirmPwd");
+        int userId= Integer.parseInt(req.getParameter("userId"));
+        resp.setContentType("text/html;charset=utf-8");
+        PrintWriter out = resp.getWriter();
+       if(!oldPwd.equals(user.getPassword())){
+           out.print("<script>alert('原密码错误!');window.location.href='pages/index-admin.jsp'</script>");
+       }else if(!confirmPwd.equals(newPwd)){
+           out.print("<script>alert('两次密码不一致!');window.location.href='pages/index-admin.jsp'</script>");
+
+       }else {
+           adminService.updatePwd(newPwd,userId);
+           out.print("<script>alert('修改成功，请重新登录!');window.location.href='userServlet?action=exitLogin'</script>");
+       }
+
+    }
+    protected void exitLogin(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession();
+        session.invalidate();
+        resp.sendRedirect("login.jsp");
     }
 }
 

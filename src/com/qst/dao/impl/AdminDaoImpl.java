@@ -61,6 +61,11 @@ public class AdminDaoImpl extends BaseDao implements AdminDao {
         return update(sql,status,userId);
     }
 
+    @Override
+    public int updateUserName(String userName,int userId) {
+        String sql="update user set userName=? where userId=?";
+        return update(sql,userName,userId);
+    }
 
 
     @Override
@@ -79,6 +84,12 @@ public class AdminDaoImpl extends BaseDao implements AdminDao {
     public List<User> queryByAll(String userName, int userType) {
         String sql="select userId,userName,password,userType,status,createTime from user WHERE userName=? and userType=?";
         return queryForList(User.class,sql,userName,userType);
+    }
+
+    @Override
+    public int updatePwd(String password,int userId) {
+        String sql="update user set password=? where userId=?";
+        return update(sql,password,userId);
     }
 
     @Override

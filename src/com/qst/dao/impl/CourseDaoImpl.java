@@ -10,8 +10,8 @@ public class CourseDaoImpl extends BaseDao implements CourseDao {
 
     @Override
     public int addCourse(Course course) {
-        String sql="insert into course(c_name,description,createTime) values(?,?,?)";
-        return update(sql,course.getC_name(),course.getDescription(),course.getCreateTime());
+        String sql="insert into course(c_name,description,createTime) values(?,?,now())";
+        return update(sql,course.getC_name(),course.getDescription());
     }
 
     @Override
@@ -40,8 +40,8 @@ public class CourseDaoImpl extends BaseDao implements CourseDao {
 
     @Override
     public int updateCourse(Course course) {
-        String sql="update course set `c_name`=?,`description`=?,`createTime`=? where course_id=?";
-        return update(sql,course.getC_name(),course.getDescription(),course.getCreateTime(),course.getCourse_id());
+        String sql="update course set `c_name`=?,`description`=? where course_id=?";
+        return update(sql,course.getC_name(),course.getDescription(),course.getCourse_id());
     }
 
     @Override

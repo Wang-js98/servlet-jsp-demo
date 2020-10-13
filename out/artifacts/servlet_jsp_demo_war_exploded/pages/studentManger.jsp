@@ -88,14 +88,14 @@
 				   </table>
 				   <br> 共${result.pageCount }页  当前第${result.currentPage }页
 				   <c:if test="${result.currentPage != 1}">
-					   <a href="changePage?pageNo=1" >首页</a>
-					   <a href="changePage?pageNo=${result.currentPage-1 }" >上一页</a>
+					   <a href="studentServlet?action=studentList&pageNo=1" >首页</a>
+					   <a href="studentServlet?action=studentList&pageNo=${result.currentPage-1 }" >上一页</a>
 				   </c:if>
 
 
 				   <c:if test="${result.currentPage != result.pageCount}">
-					   <a href="changePage?pageNo=${result.currentPage+1 }" >下一页</a>
-					   <a href="changePage?pageNo=${result.pageCount }" >尾页</a>
+					   <a href="studentServlet?action=studentList&pageNo=${result.currentPage+1 }" >下一页</a>
+					   <a href="studentServlet?action=studentList&pageNo=${result.pageCount }" >尾页</a>
 				   </c:if>
 			   </div>
 			   

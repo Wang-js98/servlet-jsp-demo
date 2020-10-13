@@ -54,6 +54,12 @@ public class ClassServlet extends BaseServlet{
 
 
     }
-
+    protected void addClassRoom(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String class_name = req.getParameter("class_name");
+        ClassRoom classRoom=new ClassRoom();
+        classRoom.setC_name(class_name);
+        classRoomService.addClassRoom(classRoom);
+        req.getRequestDispatcher("classServlet?action=pageClassRooms&pageNo=1").forward(req, resp);
+    }
 
 }
