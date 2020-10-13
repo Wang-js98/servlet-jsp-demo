@@ -23,9 +23,9 @@ public class ToUserManger extends HttpServlet {
         Page<User> page = adminService.queryUsers(1, 5);
         req.setAttribute("result",page);
 
-        List<ClassRoom> list  = classRoomService.queryClassRoom();
+       List<ClassRoom> list  = classRoomService.queryClassRoom2();
 
-        req.setAttribute("classRoom",list);
+      req.setAttribute("classRoom",list);
         //跳转到用户管理页面
         req.getRequestDispatcher("pages/userManger.jsp").forward(req, resp);
         //resp.sendRedirect("login.jsp");

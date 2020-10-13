@@ -17,13 +17,14 @@ import java.util.List;
 
 public class StudentServlet extends BaseServlet{
 
-
     StudentService studentService=new StudentServiceImpl();
+
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doPost(req,resp);
     }
+
     protected void studentList(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         int pageNo = Integer.parseInt(req.getParameter("pageNo"));
@@ -48,6 +49,7 @@ public class StudentServlet extends BaseServlet{
         req.getRequestDispatcher("pages/studentManger.jsp").forward(req, resp);
 
     }
+
 
 
 }

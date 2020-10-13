@@ -33,6 +33,16 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
+    public void addUser(User user) {
+
+    }
+
+    @Override
+    public void addStudent(Student student) {
+
+    }
+
+    @Override
     public int addStudent(User user, Student student) {
        int i = teacherDao.addUser(user);
        int j= studentDao.addStudent(student);
@@ -43,6 +53,12 @@ public class StudentServiceImpl implements StudentService {
     public List<Student> searchStu(String s_name) {
         List<Student> list = studentDao.queryByStudentName(s_name);
         return list;
+    }
+
+
+    @Override
+    public List<Student> queryByStudentName(String userName) {
+        return studentDao.queryByStudentName(userName);
     }
 }
 

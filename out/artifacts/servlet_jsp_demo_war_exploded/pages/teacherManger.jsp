@@ -1,6 +1,23 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
+<%--动态获取base--%>
+<%
+	String basePath=request.getScheme()
+			+"://"
+			+request.getServerName()
+			+":"
+			+request.getServerPort()
+			+request.getContextPath()
+			+"/";
+
+	pageContext.setAttribute("basePath",basePath);
+
+
+%>
+
+<!--写base路径永远固定相对路径跳转问题-->
+<base href=" <%=basePath%>">
 	<head>
 		<meta charset="utf-8">
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.min.css"/>
@@ -32,11 +49,11 @@
 		<div id="div1">
 			
 		  <div id="left">
-			   <div class="lf-bar"><a><font>用户管理</font></a></div>
-			   <div class="lf-bar"><a><font>教师管理</font></a></div>
-			   <div class="lf-bar"><a><font>学生管理</font></a></div>
-			   <div class="lf-bar"><a><font>课程管理</font></a></div>
-			   <div class="lf-bar"><a><font>班级管理</font></a></div>
+			  <div class="lf-bar"><a><font>用户管理</font></a></div>
+			  <div class="lf-bar"><a><font>教师管理</font></a></div>
+			  <div class="lf-bar"><a href="studentServlet?action=StudentList"><font>学生管理</font></a></div>
+			  <div class="lf-bar"><a href="courseServlet?action=pageCourse&pageNo=1"><font>课程管理</font></a></div>
+			  <div class="lf-bar"><a href="classServlet?action=pageClassRooms&pageNo=1"><font>班级管理</font></a></div>
 			   
 		  </div>
 		  <div id="right">

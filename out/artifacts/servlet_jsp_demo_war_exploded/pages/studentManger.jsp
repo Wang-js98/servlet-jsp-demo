@@ -32,11 +32,11 @@
 		<div id="div1">
 			
 		  <div id="left">
-			   <div class="lf-bar"><a><font>用户管理</font></a></div>
-			   <div class="lf-bar"><a><font>教师管理</font></a></div>
-			   <div class="lf-bar"><a><font>学生管理</font></a></div>
-			   <div class="lf-bar"><a><font>课程管理</font></a></div>
-			   <div class="lf-bar"><a><font>班级管理</font></a></div>
+			  <div class="lf-bar"><a><font>用户管理</font></a></div>
+			  <div class="lf-bar"><a><font>教师管理</font></a></div>
+			  <div class="lf-bar"><a href="studentServlet?action=StudentList"><font>学生管理</font></a></div>
+			  <div class="lf-bar"><a href="courseServlet?action=pageCourse&pageNo=1"><font>课程管理</font></a></div>
+			  <div class="lf-bar"><a href="classServlet?action=pageClassRooms&pageNo=1"><font>班级管理</font></a></div>
 			   
 		  </div>
 		  <div id="right">
@@ -68,8 +68,9 @@
 						 <th>姓名</th>
 						 <th>年龄</th>
 						 <th>性别</th>
-						 <th>成绩管理</th>
+						
 					 </tr>
+
 					   <c:forEach var="stus" items="${result.data}">
 					 <tr>
 						 <td>${stus.s_id}</td>
@@ -78,8 +79,9 @@
 						 <td>
 							<c:if test="${stus.sex == 1}">男</c:if>
 						    <c:if test="${stus.sex == 0}">女</c:if>
+
 						 </td>
-						
+
 					 </tr>
 					   </c:forEach>
 

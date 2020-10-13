@@ -27,7 +27,7 @@
 <base href=" <%=basePath%>">
 <head>
 
-    <title>Title</title>
+    <title>学生信息管理系统</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/threebar.css"/>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/index.css"/>
@@ -54,11 +54,12 @@
 <div id="div1">
 
     <div id="left">
+
         <div class="lf-bar"><a href="toUserManger"><font>用户管理</font></a></div>
         <div class="lf-bar"><a href="teacherServlet?action=TeacherList&pageNo=1"><font>教师管理</font></a></div>
         <div class="lf-bar"><a href="studentServlet?action=studentList&pageNo=1"><font>学生管理</font></a></div>
-        <div class="lf-bar"><a href="courseServlet?action=CourseList"><font>课程管理</font></a></div>
-        <div class="lf-bar"><a><font>班级管理</font></a></div>
+        <div class="lf-bar"><a href="courseServlet?action=pageCourse&pageNo=1"><font>课程管理</font></a></div>
+        <div class="lf-bar"><a href="classServlet?action=pageClassRooms&pageNo=1"><font>班级管理</font></a></div>
 
     </div>
     <div id="right">

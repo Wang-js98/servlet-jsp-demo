@@ -56,8 +56,8 @@ public class TeacherServlet extends BaseServlet{
        int t_id= Integer.parseInt(req.getParameter("t_id"));
 
         List<WorkArrange> list = teacherService.queryWork(t_id);
-        List<ClassRoom> classRooms = classRoomService.queryClassRoom();
-        List<Course> courses = courseService.queryCourse();
+        List<ClassRoom> classRooms = classRoomService.queryClassRoom2();
+        List<Course> courses = courseService.queryCourse2();
         req.setAttribute("classRooms",classRooms);
         req.setAttribute("works",list);
         req.setAttribute("courses",courses);
