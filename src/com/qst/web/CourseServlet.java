@@ -79,4 +79,17 @@ public class CourseServlet extends BaseServlet{
         req.getRequestDispatcher("/pages/courseManger.jsp").forward(req, resp);
     }
 
+    protected void addCourse(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+       String c_name=req.getParameter("course_name");
+       String description=req.getParameter("description");
+       Course course=new Course();
+       course.setC_name(c_name);
+       course.setDescription(description);
+       courseService.addCourse(course);
+
+        //跳转到课程管理页面
+        req.getRequestDispatcher("courseServlet?action=pageCourse&pageNo=1").forward(req, resp);
+    }
+
+
 }

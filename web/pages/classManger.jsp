@@ -73,7 +73,26 @@
 			<input class="btn btn-default" type="submit" value="搜索">${requestScope.msg}
 			
 			</form>
-				  <a href="#" class="btn btn-primary btn-sm active" role="button">添加班级</a>
+				  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#model2">添加班级</button>
+
+				  <div class="modal fade bs-example-modal-lg " tabindex="-1" id="model2" role="dialog" aria-labelledby="myLargeModalLabel">
+					  <div class="modal-dialog modal-lg" role="document">
+						  <div class="modal-content">
+							  <h2>添加班级</h2>
+							  <form action="classServlet?action=addClassRoom" method="post">
+								  <div class="form-group">
+									  <label for="inputEmail3" class="col-sm-2 control-label">班级名称</label>
+									  <div class="col-sm-10">
+										  <input type="text" name="class_name" class="form-control"  >
+									  </div>
+								  </div>
+
+								  <br /><br /><br /><br />
+								  <button type="submit" class="btn btn-primary btn-xs btn-block">保存</button>
+							  </form>
+						  </div>
+					  </div>
+				  </div>
 			   </div>
 			   <br /><br />
 			 

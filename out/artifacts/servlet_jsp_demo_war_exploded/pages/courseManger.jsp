@@ -55,8 +55,37 @@
 				<input class="btn btn-default" type="submit" value="搜索">${requestScope.msg}
 
 			</form>
-			<a href="#" class="btn btn-primary btn-sm active" role="button">添加课程</a>
+			<!-- Large modal -->
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#model2">添加课程</button>
+
+			<div class="modal fade bs-example-modal-lg " tabindex="-1" id="model2" role="dialog" aria-labelledby="myLargeModalLabel">
+				<div class="modal-dialog modal-lg" role="document">
+					<div class="modal-content">
+						<h2>添加课程</h2>
+						<form action="courseServlet?action=addCourse" method="post">
+							<div class="form-group">
+								<label for="inputEmail3" class="col-sm-2 control-label">课程名称</label>
+								<div class="col-sm-10">
+									<input type="text" name="course_name" class="form-control"  >
+								</div>
+							</div>
+							<br /><br /><br />
+							<div class="form-group">
+								<label for="inputEmail3" class="col-sm-2 control-label">课程备注</label>
+								<div class="col-sm-10">
+									<textarea class="form-control" rows="3" name="description"></textarea>
+								</div>
+							</div>
+
+							<br /><br /><br />
+							<br />
+							<button type="submit" class="btn btn-primary btn-xs btn-block">保存</button>
+						</form>
+					</div>
+				</div>
+			</div>
 		</div>
+
 		<br /><br />
 
 
@@ -81,7 +110,7 @@
 					<td>
 						<a href="courseServlet?action=deleteCourseById&id=${courses.course_id}&pageNo=${requestScope.courses.pageCount}" class="btn btn-danger btn-sm active" role="button">删除</a>
 						<!-- Large modal -->
-						<button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">编辑</button>
+						<button type="button" class="btn btn-sm btn-primary"  data-toggle="modal"  data-target="#myModal">编辑</button>
 
 
 					</td>
@@ -125,7 +154,7 @@
 				<a href="courseServlet?action=pageCourse&pageNo=${courses.pageCount }" >尾页</a>
 			</c:if>
 		</div>
-
+	</div>
 	</div>
 </div>
 

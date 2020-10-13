@@ -16,8 +16,8 @@ public class ClassRoomDaoImpl extends BaseDao implements ClassRoomDao {
 
     @Override
     public int addClassRoom(ClassRoom classRoom) {
-        String sql="insert into classroom(c_name,createTime) values(?,?)";
-        return update(sql,classRoom.getC_name(),classRoom.getCreateTime());
+        String sql="insert into classroom(c_name,createTime) values(?,now())";
+        return update(sql,classRoom.getC_name());
     }
 
     @Override
@@ -42,8 +42,8 @@ public class ClassRoomDaoImpl extends BaseDao implements ClassRoomDao {
 
     @Override
     public int updateClassRoom(ClassRoom classRoom) {
-        String sql="update classroom set `c_name`=?,`createTime`=? where c_id=?";
-        return update(sql,classRoom.getC_name(),classRoom.getCreateTime(),classRoom.getC_id());
+        String sql="update classroom set c_name=? where c_id=?";
+        return update(sql,classRoom.getC_name(),classRoom.getC_id());
     }
 
     @Override

@@ -18,6 +18,11 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
+    public void updateUserName(String userName, int userId) {
+        adminDao.updateUserName(userName,userId);
+    }
+
+    @Override
     public Page<User> queryUsers(int pageNo, int pageSize) {
         List<User> list = adminDao.queryUsers(pageNo,pageSize);
         int total = adminDao.selectCount("user");
@@ -78,5 +83,10 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public User queryByUsername(String userName) {
         return adminDao.queryByUsername(userName);
+    }
+
+    @Override
+    public void updatePwd(String password, int userId) {
+        adminDao.updatePwd(password,userId);
     }
 }
