@@ -10,6 +10,7 @@ public interface ClassRoomDao {
     public int addClassRoom(ClassRoom classRoom);
     //分页查询所有课程
     public List<ClassRoom> queryClassRoom(int pageNo, int pageSize);
+    public List<ClassRoom> queryClassRoom2();
     //根据班级名称查询
     public  List<ClassRoom> queryClassRoomByName(String c_name);
     //查询指定表字段总数

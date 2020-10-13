@@ -9,6 +9,7 @@ public interface CourseDao {
     public int addCourse(Course course);
     //分页查询查询所有课程信息
     public List<Course> queryCourse(int pageNo, int pageSize);
+    public List<Course> queryCourse2();
     //根据课程名称查询
     public List<Course> queryByCourseName(String c_name);
     //根据课程id删除课程

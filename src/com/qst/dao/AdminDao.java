@@ -19,7 +19,15 @@ public interface AdminDao {
     public int deleteAdminId(Integer id);
     //根据用户名查询
     public User queryByUsername(String userName);
+    public List<User> queryByUsername2(String userName);
+    //根据用户类型查询
+    public List<User> queryByUserType(int userType);
+    //根据 用户名 和 用户类型 查询
+    public List<User> queryByAll(String userName,int userType);
 
     //查询指定表字段总数
     public int selectCount(String table_name);
+
+    //改变用户状态
+    public int changeStatus(int status,int userId);
 }

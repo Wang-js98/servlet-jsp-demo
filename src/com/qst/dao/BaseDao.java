@@ -20,7 +20,7 @@ public abstract class BaseDao {
     @return如果返回-1，说明执行失败。返回其它表示影响的函数
     */
 
-    public int update(String sql,Object... args){
+    public int update(String sql,Object... args)  {
         Connection connection= JdbcUtils.getConnection();
         try {
             return queryRunner.update(connection,sql,args);
@@ -71,7 +71,7 @@ public abstract class BaseDao {
 
      */
 
-    public <T> List<T> queryForList(Class<T> type , String sql, Object...args){
+    public <T> List<T> queryForList(Class<T> type , String sql, Object...args)  {
         Connection connection= JdbcUtils.getConnection();
         try {
             return queryRunner.query(connection,sql,new BeanListHandler<T>(type),args);
@@ -92,7 +92,7 @@ public abstract class BaseDao {
      */
 
 
-    public Object queryForSingleValue(String sql, Object...args){
+    public Object queryForSingleValue(String sql, Object...args) {
         Connection connection= JdbcUtils.getConnection();
         try {
             return queryRunner.query(connection,sql,new ScalarHandler(),args);

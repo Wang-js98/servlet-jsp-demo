@@ -18,6 +18,11 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
+    public List<Course> queryCourse2() {
+        return courseDao.queryCourse2();
+    }
+
+    @Override
     public Page<Course> queryCourse(int pageNo, int pageSize) {
         List<Course> courseList = courseDao.queryCourse(pageNo,pageSize);
         int total = courseDao.selectCount("course");

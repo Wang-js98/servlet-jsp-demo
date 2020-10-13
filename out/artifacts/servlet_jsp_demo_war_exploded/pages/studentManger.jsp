@@ -1,23 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<%--动态获取base--%>
-<%
-	String basePath=request.getScheme()
-			+"://"
-			+request.getServerName()
-			+":"
-			+request.getServerPort()
-			+request.getContextPath()
-			+"/";
-
-	pageContext.setAttribute("basePath",basePath);
-
-
-%>
-
-<!--写base路径永远固定相对路径跳转问题-->
-<base href=" <%=basePath%>">
 	<head>
 		<meta charset="utf-8">
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.min.css"/>
@@ -63,10 +46,10 @@
 			   <br />
 			  <div id="rig2" class="right-group">
 				   <h2>搜索信息</h2>
-			  <form>
+			  <form action="studentServlet?action=searchStudent" method="post">
 			  <div class="input-group" id="input1">
 			    <span class="input-group-addon" id="basic-addon1">学生姓名</span>
-			    <input type="text" class="form-control" placeholder="学生姓名" aria-describedby="basic-addon1">
+			    <input type="text" name="s_name" class="form-control" placeholder="学生姓名" aria-describedby="basic-addon1">
 			  </div>
 			  
 			
@@ -85,49 +68,35 @@
 						 <th>姓名</th>
 						 <th>年龄</th>
 						 <th>性别</th>
-						 <th>成绩管理</th>
+						
 					 </tr>
-					   <c:forEach items="${requestScope.students}" var="students">
+
+					   <c:forEach var="stus" items="${result.data}">
 					 <tr>
+						 <td>${stus.s_id}</td>
+						 <td>${stus.s_name}</td>
+						 <td>${stus.age}</td>
+						 <td>
+							<c:if test="${stus.sex == 1}">男</c:if>
+						    <c:if test="${stus.sex == 0}">女</c:if>
 
-						 <td>${students.s_id}</td>
-						 <td>${students.s_name}</td>
-						 <td>${students.age}</td>
-						 <td>${students.sex}</td>
-
-						 <td> 
-						 
-						 <!-- Large modal -->
-						 <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">成绩管理</button>
-
-						 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-						   <div class="modal-dialog modal-lg" role="document">
-						     <div class="modal-content">
-								 <h2>成绩管理/张三</h2>
-						       <form>
-								   <table class="table table-bordered">
-								     <tr>
-										 <th>课程</th>
-										 <th>平时成绩</th>
-										 <th>考试成绩</th>
-										 <th>总评成绩</th>
-									 </tr>
-									 <tr>
-										 <td></td>
-										 <td><input type="text" placeholder="100"></td>
-										 <td><input type="text" placeholder="100"></td>
-										 <td><input type="text" placeholder="100"></td>
-									 </tr>
-								   </table>
-								   <button type="submit" class="btn btn-primary btn-xs btn-block">保存</button>
-							   </form>
-						     </div>
-						   </div>
-						 </div>
 						 </td>
+
 					 </tr>
 					   </c:forEach>
+
 				   </table>
+				   <br> 共${result.pageCount }页  当前第${result.currentPage }页
+				   <c:if test="${result.currentPage != 1}">
+					   <a href="changePage?pageNo=1" >首页</a>
+					   <a href="changePage?pageNo=${result.currentPage-1 }" >上一页</a>
+				   </c:if>
+
+
+				   <c:if test="${result.currentPage != result.pageCount}">
+					   <a href="changePage?pageNo=${result.currentPage+1 }" >下一页</a>
+					   <a href="changePage?pageNo=${result.pageCount }" >尾页</a>
+				   </c:if>
 			   </div>
 			   
 		  </div>

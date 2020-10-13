@@ -13,6 +13,7 @@ public interface CourseService {
 
     //分页查询所有课程信息
     public Page<Course> queryCourse(int pageNo, int pageSize);
+    public List<Course> queryCourse2();
     //根据课程名称查询
     public Page<Course> queryByCourseName(String c_name);
     //根据课程id删除课程

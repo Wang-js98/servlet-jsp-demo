@@ -1,4 +1,5 @@
-${pageContext.request.contextPath}
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <%--动态获取base--%>
 <%
@@ -62,20 +63,21 @@ ${pageContext.request.contextPath}
 			   <br />
 			  <div id="rig2" class="right-group">
 				   <h2>搜索信息</h2>
-			  <form>
+			  <form action="teacherServlet?action=searchTeacher" method="post">
 			  <div class="input-group" id="input1">
 			    <span class="input-group-addon" id="basic-addon1">教师姓名</span>
-			    <input type="text" class="form-control" placeholder="教师姓名" aria-describedby="basic-addon1">
+			    <input type="text" class="form-control" name="t_name" placeholder="教师姓名" aria-describedby="basic-addon1">
 			  </div>
 			  
 			 <div id="input2">
 		     <span id="sp1">教师学历</span>
-			<select class="form-control" id="sel1" > 
-			  <option value="" disabled selected>选择学历</option>
-			  <option>博士</option>
-			  <option>研究生</option>
-			  <option>本科</option>
-			  <option>高中</option>
+			<select class="form-control" id="sel1" name="education">
+<%--		不要设置disabled属性，不然后端取不到这个值，会为null，null强转成int变为0		--%>
+			  <option value="default" >选择学历</option>
+			  <option value="博士">博士</option>
+			  <option value="研究生">研究生</option>
+			  <option value="本科">本科</option>
+			  <option value="高中">高中</option>
 			 
 			</select>
 			</div> 
@@ -98,54 +100,36 @@ ${pageContext.request.contextPath}
 						 <th>学历</th>
 						 <th>工作安排</th>
 					 </tr>
+					   <c:forEach items="${result.data}" var="tea">
 					 <tr>
-						 <td></td>
-						 <td></td>
-						 <td></td>
-						 <td> </td>
-						 <td></td>
+						 <td>${tea.t_id}</td>
+						 <td>${tea.t_name}</td>
+						 <td>${tea.age}</td>
+						 <td>
+							 <c:if test="${tea.sex == 1}">男</c:if>
+							 <c:if test="${tea.sex == 0}">女</c:if>
+						 </td>
+						 <td>${tea.education}</td>
 						 <td> 
 						 
 						 <!-- Large modal -->
-						 <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">工作安排</button>
-						 
-						 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-						   <div class="modal-dialog modal-lg" role="document">
-						     <div class="modal-content">
-								 <h2>工作安排</h2>
-						       <form>
-								   选择课程
-								   <label class="radio-inline">
-								     <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 英语
-								   </label>
-								   <label class="radio-inline">
-								     <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 语文
-								   </label>
-								   <label class="radio-inline">
-								     <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 数学
-								   </label>
-								   <br /><br />
-								   
-								   选择班级
-								   <label class="checkbox-inline">
-								     <input type="checkbox" id="inlineCheckbox1" value="option1"> 二年一班
-								   </label>
-								   <label class="checkbox-inline">
-								     <input type="checkbox" id="inlineCheckbox2" value="option2"> 二年二班
-								   </label>
-								   <label class="checkbox-inline">
-								     <input type="checkbox" id="inlineCheckbox3" value="option3"> 二年三班
-								   </label>
-								   <br /><br />
-								   <input class="btn btn-primary btn-sm " type="submit" value="保存">&nbsp;
-								    <input class="btn btn-primary btn-sm " type="reset" value="重置">
-							   </form>
-						     </div>
-						   </div>
-						 </div>
+							 <a href="teacherServlet?action=queryWork&t_id=${tea.t_id}" class="btn btn-primary btn-xs active" role="button">工作安排</a>
 						 </td>
 					 </tr>
+					   </c:forEach>
+
 				   </table>
+				   <br> 共${result.pageCount }页  当前第${result.currentPage }页
+				   <c:if test="${result.currentPage != 1}">
+					   <a href="teacherServlet?action=TeacherList&pageNo=1" >首页</a>
+					   <a href="teacherServlet?action=TeacherList&pageNo=${result.currentPage-1 }" >上一页</a>
+				   </c:if>
+
+
+				   <c:if test="${result.currentPage != result.pageCount}">
+					   <a href="teacherServlet?action=TeacherList&pageNo=${result.currentPage+1 }" >下一页</a>
+					   <a href="teacherServlet?action=TeacherList&pageNo=${result.pageCount }" >尾页</a>
+				   </c:if>
 			   </div>
 			   
 		  </div>
@@ -155,5 +139,6 @@ ${pageContext.request.contextPath}
 		<script src="${pageContext.request.contextPath}/js/jquery-3.2.1.min.js"></script>
 		<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
 		<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+
 	</body>
 </html>

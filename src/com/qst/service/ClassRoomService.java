@@ -10,6 +10,7 @@ public interface ClassRoomService {
     public int addClassRoom(ClassRoom classRoom);
     //分页查询所有班级
     public Page<ClassRoom> queryClassRoom(int pageNo, int pageSize);
+    public List<ClassRoom> queryClassRoom2();
     //根据班级名称查询
     public Page<ClassRoom> queryClassRoomByName(String c_name);
     //修改班级信息

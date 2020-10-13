@@ -19,6 +19,11 @@ public class ClassRoomServiceImpl implements ClassRoomService {
     }
 
     @Override
+    public List<ClassRoom> queryClassRoom2() {
+        return classRoomDao.queryClassRoom2();
+    }
+
+    @Override
     public Page<ClassRoom> queryClassRoom(int pageNo, int pageSize) {
         List<ClassRoom> classRooms = classRoomDao.queryClassRoom(pageNo,pageSize);
         int total = classRoomDao.selectCount("classroom");

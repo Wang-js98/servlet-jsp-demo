@@ -10,31 +10,26 @@ import java.util.List;
 
 public class StudentDaoImpl extends BaseDao implements StudentDao {
 
-    @Override
-    public int addUser(User user) {
-        String sql="insert into user(userName,password,userType,status,createTime) values(?,?,?,?,?)";
-        return update(sql,user.getUserName(),user.getPassword(),1,user.getStatus(),
-                user.getCreatTime());
-    }
+
 
     @Override
     public int addStudent(Student student) {
-        String sql="insert into student(userName,s_name,age,sex,comment,createTime,c_id) values(?,?,?,?,?,?,?)";
-        return update(sql,student.getUserName(),student.getS_name(),student.getAge(),student.getSex(),student.getComment()
-                ,student.getCreateTime(),student.getC_id());
+        String sql="insert into student(userName,s_name,age,sex,createTime,c_id) values(?,?,?,?,now(),?)";
+        return update(sql,student.getUserName(),student.getS_name(),student.getAge(),student.getSex(),
+                student.getC_id()  );
+    }
+
+
+    @Override
+    public List<Student> queryByStudentName(String s_name) {
+        String sql="select * from student where s_name = ?";
+        return queryForList(Student.class,sql,s_name);
     }
 
     @Override
-    public List<Student> queryStudents() {
-        String sql="select s_id,userName,s_name,age,sex,comment,createTime,c_id from student";
+    public List<Student> queryStus(int pageNo, int pageSize) {
+        int dataNum =( pageNo-1)*pageSize;
+        String sql="select * from student limit "+dataNum+","+pageSize;
         return queryForList(Student.class,sql);
     }
-
-    @Override
-    public Student queryByStudentName(String userName) {
-        String sql="select s_id,userName,s_name,age,sex,comment,createTime,c_id from student WHERE userName=?";
-        return queryForOne(Student.class,sql,userName);
-
-    }
-
 }

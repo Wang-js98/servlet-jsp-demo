@@ -46,19 +46,19 @@
 			   <br />
 			  <div id="rig2" class="right-group">
 				   <h2>搜索信息</h2>
-			  <form>
+			  <form action="userServlet?action=searchUser" method="post">
 			  <div class="input-group" id="input1">
 			    <span class="input-group-addon" id="basic-addon1">用户名</span>
-			    <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+			    <input type="text" name="searchName" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
 			  </div>
 			  
 			 <div id="input2">
 		     <span id="sp1">用户类型</span>
-			<select class="form-control" id="sel1" > 
-			  <option value="" disabled selected>选择用户类型</option>
-			  <option>学生</option>
-			  <option>管理员</option>
-			  <option>教师</option>
+			<select class="form-control" id="sel1" name="searchType">
+			  <option value="0" disabled selected>选择用户类型</option>
+			  <option value="1">学生</option>
+			  <option value="3">管理员</option>
+			  <option value="2">教师</option>
 			 
 			</select>
 			</div> 
@@ -69,8 +69,137 @@
 			   </div>
 			   <br /><br />
 			   <div class="right-group">
-				 <a href="#" class="btn btn-primary btn-sm active" role="button">添加学生</a>
-			     <a href="#" class="btn btn-primary btn-sm active" role="button">添加教师</a>
+				   <!-- Large modal -->
+				   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#model2" >添加学生</button>
+
+				   <div id="model2" class="modal fade bs-example-modal-lg " tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+					   <div class="modal-dialog modal-lg" role="document">
+						   <div class="modal-content">
+							   <form action="userServlet?action=addStudent" method="post">
+								   <div class="form-group">
+									   <label for="inputEmail3" class="col-sm-2 control-label">用户名</label>
+									   <div class="col-sm-10">
+										   <input type="text" name="userName" class="form-control" id="inputEmail3" >
+									   </div>
+								   </div>
+								   <br /><br /><br />
+								   <div class="form-group">
+									   <label for="inputEmail3" class="col-sm-2 control-label">姓名</label>
+									   <div class="col-sm-10">
+										   <input type="text" name="s_name" class="form-control" id="inputEmail3" >
+									   </div>
+								   </div>
+								   <br /><br /><br />
+								   <div class="form-group">
+									   <label for="inputEmail3" class="col-sm-2 control-label">密码</label>
+									   <div class="col-sm-10">
+										   <input type="text" name="password" class="form-control" id="inputEmail3" >
+									   </div>
+								   </div><br /><br /><br />
+								   <div class="form-group">
+									   <label for="inputEmail3" class="col-sm-2 control-label">年龄</label>
+									   <div class="col-sm-10">
+										   <input type="text" name="age" class="form-control" id="inputEmail3" >
+									   </div>
+								   </div><br /><br /><br />
+								   <div class="form-group">
+									   <label for="inputEmail3" class="col-sm-2 control-label">性别</label>
+									   <div class="col-sm-5">
+										   <label class="radio-inline">
+											   <input type="radio" name="sex" id="inlineRadio1" value="1"> 男
+										   </label>
+										   <label class="radio-inline">
+											   <input type="radio" name="sex" id="inlineRadio2" value="0"> 女
+										   </label>
+
+									   </div>
+								   </div>
+								   <br /><br /><br />
+								   <div class="form-group">
+									   <label for="inputEmail3" class="col-sm-2 control-label">班级</label>
+									   <div class="col-sm-10">
+										   <select  name="c_id" class="form-control">
+											   <c:forEach var="classr" items="${classRoom}">
+											   <option  value="${classr.c_id}">${classr.c_name}</option>
+
+											   </c:forEach>
+										   </select>
+									   </div>
+								   </div>
+								   <br />
+								   <button type="submit" class="btn btn-primary btn-xs btn-block">保存</button>
+							   </form>
+						   </div>
+					   </div>
+				   </div>
+
+				   <!-- Large modal -->
+				   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#model1">添加教师</button>
+
+				   <div class="modal fade bs-example-modal-lg " tabindex="-1" id="model1" role="dialog" aria-labelledby="myLargeModalLabel">
+					   <div class="modal-dialog modal-lg" role="document">
+						   <div class="modal-content">
+							   <form action="userServlet?action=addTeacher" method="post">
+								   <div class="form-group">
+									   <label for="inputEmail3" class="col-sm-2 control-label">用户名</label>
+									   <div class="col-sm-10">
+										   <input type="text" name="userName" class="form-control" id="inputEmail3" >
+									   </div>
+								   </div>
+								   <br /><br /><br />
+								   <div class="form-group">
+									   <label for="inputEmail3" class="col-sm-2 control-label">姓名</label>
+									   <div class="col-sm-10">
+										   <input type="text" name="t_name" class="form-control" id="inputEmail3" >
+									   </div>
+								   </div>
+								   <br /><br /><br />
+								   <div class="form-group">
+									   <label for="inputEmail3" class="col-sm-2 control-label">密码</label>
+									   <div class="col-sm-10">
+										   <input type="text" name="password" class="form-control" id="inputEmail3" >
+									   </div>
+								   </div><br /><br /><br />
+								   <div class="form-group">
+									   <label for="inputEmail3" class="col-sm-2 control-label">年龄</label>
+									   <div class="col-sm-10">
+										   <input type="text" name="age" class="form-control" id="inputEmail3" >
+									   </div>
+								   </div><br /><br /><br />
+								   <div class="form-group">
+									   <label for="inputEmail3"  class="col-sm-2 control-label">性别</label>
+									   <div class="col-sm-5">
+										   <label class="radio-inline">
+											   <input type="radio" name="sex" id="inlineRadio1" value="1"> 男
+										   </label>
+										   <label class="radio-inline">
+											   <input type="radio" name="sex" id="inlineRadio2" value="0"> 女
+										   </label>
+
+									   </div>
+								   </div><br /><br /><br />
+
+								   <div class="form-group">
+									   <label for="inputEmail3" class="col-sm-2 control-label">学历</label>
+									   <div class="col-sm-10">
+										   <select name="education" class="form-control">
+											   <option>博士</option>
+											   <option>研究生</option>
+											   <option>本科</option>
+											   <option>大专</option>
+
+										   </select>
+									   </div>
+								   </div>
+
+
+								   <br /><br /><br />
+								   <br />
+								   <button type="submit" class="btn btn-primary btn-xs btn-block">保存</button>
+							   </form>
+						   </div>
+					   </div>
+				   </div>
 			   </div>
 			   <br />
 			   <div class="right-group">
@@ -88,14 +217,19 @@
 						   <tr>
 							   <td>${user.userId}</td>
 							   <td>${user.userName}</td>
-							   <td>${user.userType}</td>
+							   <td>
+								   <c:if test="${user.userType == 3}">管理员</c:if>
+								   <c:if test="${user.userType == 2}">教师</c:if>
+								   <c:if test="${user.userType == 1}">学生</c:if>
+
+							   </td>
 							   <td>
 								<c:if test="${user.status == 1}"> 启用</c:if>
 								<c:if test="${user.status == 0}"> 禁用</c:if>
-								   <a href="#" class="btn btn-default btn-sm active" role="button">切换</a>
+								   <a href="changeStatus?status=${user.status}&userId=${user.userId}" class="btn btn-default btn-sm active" role="button">切换</a>
 							   </td>
-							   <td>${user.creatTime}</td>
-							   <td> <a href="#" class="btn btn-danger btn-sm active" role="button">删除</a></td>
+							   <td>${user.creatTime }</td>
+							   <td> <a href="userServlet?action=deleteUser&id=${user.userId}" class="btn btn-danger btn-sm active" role="button">删除</a></td>
 						   </tr>
 					   </c:forEach>
 
