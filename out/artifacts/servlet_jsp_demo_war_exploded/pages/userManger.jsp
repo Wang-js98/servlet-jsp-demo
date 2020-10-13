@@ -18,26 +18,77 @@
 			<!-- Single button -->
 			<div class="btn-group" id="btng1">
 			  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			    Action <span class="caret"></span>
+				  ${user.userName} <span class="caret"></span>
 			  </button>
 			  <ul class="dropdown-menu">
-			    <li><a href="#">个人信息</a></li>
-			    <li><a href="#">密码修改</a></li>
-			    <li role="separator" class="divider"></li>
-			    <li><a href="#">退出</a></li>
+				  <li><a data-toggle="modal" data-target="#personMsg" href="#">个人信息</a></li>
+				  <li><a data-toggle="modal" data-target="#pwdMsg" href="#">密码修改</a></li>
+				  <li role="separator" class="divider"></li>
+				  <li><a href="userServlet?action=exitLogin">退出</a></li>
 			  </ul>
 			</div>
 		  </div>
 		</nav>
+		<%--个人信息模态框--%>
+		<div class="modal fade bs-example-modal-lg" tabindex="-1" id="personMsg" role="dialog" aria-labelledby="myLargeModalLabel">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<h2>个人信息</h2>
+					<form action="userServlet?action=updateUserName" method="post">
+						<input type="hidden" value="${user.userId}" name="userId">
+						<div class="form-group">
+							<label for="inputEmail3" class="col-sm-2 control-label">用户名</label>
+							<div class="col-sm-10">
+								<input type="text" name="userName" class="form-control" id="inputEmail3" value="${user.userName}">
+							</div>
+						</div>
+						<br /><br /><br />
+
+						<button type="submit" class="btn btn-primary btn-xs btn-block">保存</button>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade bs-example-modal-lg" tabindex="-1" id="pwdMsg" role="dialog" aria-labelledby="myLargeModalLabel">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<h2>修改密码</h2>
+					<form action="userServlet?action=updatePwd" method="post">
+						<input type="hidden" value="${user.userId}" name="userId">
+						<div class="form-group">
+							<label for="inputEmail3" class="col-sm-2 control-label">原密码</label>
+							<div class="col-sm-10">
+								<input type="password" name="oldPwd" class="form-control" id="inputEmail3" >
+							</div>
+						</div><br><br><br>
+						<div class="form-group">
+							<label for="inputEmail3" class="col-sm-2 control-label">新密码</label>
+							<div class="col-sm-10">
+								<input type="password" name="newPwd" class="form-control" id="inputEmail3" >
+							</div>
+						</div><br><br><br>
+						<div class="form-group">
+							<label for="inputEmail3" class="col-sm-2 control-label">确认密码</label>
+							<div class="col-sm-10">
+								<input type="password" name="confirmPwd" class="form-control" id="inputEmail3" >
+							</div>
+						</div>
+						<br /><br /><br />
+
+						<button type="submit" class="btn btn-primary btn-xs btn-block">保存</button>
+					</form>
+				</div>
+			</div>
+		</div>
 		<div id="div1">
 			
 		  <div id="left">
-			   <div class="lf-bar"><a><font>用户管理</font></a></div>
-			   <div class="lf-bar"><a><font>教师管理</font></a></div>
-			   <div class="lf-bar"><a><font>学生管理</font></a></div>
-			   <div class="lf-bar"><a><font>课程管理</font></a></div>
-			   <div class="lf-bar"><a><font>班级管理</font></a></div>
-			   
+			  <div class="lf-bar"><a href="toUserManger"><font>用户管理</font></a></div>
+			  <div class="lf-bar"><a href="teacherServlet?action=TeacherList&pageNo=1"><font>教师管理</font></a></div>
+			  <div class="lf-bar"><a href="studentServlet?action=studentList&pageNo=1"><font>学生管理</font></a></div>
+			  <div class="lf-bar"><a href="courseServlet?action=pageCourse&pageNo=1"><font>课程管理</font></a></div>
+			  <div class="lf-bar"><a href="classServlet?action=pageClassRooms&pageNo=1"><font>班级管理</font></a></div>
+
 		  </div>
 		  <div id="right">
 			   <div id="rig1" class="right-group">

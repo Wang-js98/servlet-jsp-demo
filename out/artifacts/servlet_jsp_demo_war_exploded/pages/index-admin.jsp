@@ -96,7 +96,7 @@
                         <input type="password" name="confirmPwd" class="form-control" id="inputEmail3" >
                     </div>
                 </div>
-                <br /><br /><br /><br>
+                <br /><br /><br />
 
                 <button type="submit" class="btn btn-primary btn-xs btn-block">保存</button>
             </form>
