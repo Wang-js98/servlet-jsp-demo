@@ -1,5 +1,24 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<%
+	String basePath=request.getScheme()
+			+"://"
+			+request.getServerName()
+			+":"
+			+request.getServerPort()
+			+request.getContextPath()
+			+"/";
+
+	pageContext.setAttribute("basePath",basePath);
+
+
+%>
+
+<!--写base路径永远固定相对路径跳转问题-->
+<base href=" <%=basePath%>">
 	<head>
 		<meta charset="utf-8">
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.min.css"/>
@@ -31,9 +50,8 @@
 		<div id="div1">
 			
 		  <div id="left">
-			  <div class="lf-bar"><a><font>工作安排</font></a></div>
-			  
-			  <div class="lf-bar"><a><font>学生信息</font></a></div>
+			  <div class="lf-bar"><a href="teacherActionServlet?action=WorkPlanPage&pageNo=1"><font>工作安排</font></a></div>
+			  <div class="lf-bar"><a href="teacherActionServlet?action=StudentComment&pageNo=1"><font>学生信息</font></a></div>
 			   
 		  </div>
 		  <div id="right">
@@ -56,37 +74,52 @@
 						 <th>所在班级</th>
 						 <th>学生评价</th>
 					 </tr>
+					   <c:forEach items="${requestScope.studentCommentPage.data}" var="data">
 					 <tr>
-						 <td></td>
-						 <td></td>
-						 <td></td>
-						 <td></td>
-						 <td></td>
+						 <td>${data.s_id}</td>
+						 <td>${data.s_name}</td>
+						 <td>${data.age}</td>
+						 <td>${data.sex}</td>
+						 <td>${data.c_name}</td>
+						 <td>${data.comment}</td>
 						 <td> 
 						 
 						 <!-- Large modal -->
 						 <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">学生评价</button>
-						 
-						 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-						   <div class="modal-dialog modal-lg" role="document">
-						     <div class="modal-content">
-								 <h2>学生评价</h2>
-						       <form>
-								 <div class="form-group">
-								    <label for="inputEmail3" class="col-sm-2 control-label">学生评语</label>
-								    <div class="col-sm-10">
-								     <textarea class="form-control" rows="3"></textarea>
-								    </div>
-								  </div>
-								 	<br /><br /><br /><br /><br />
-								   <button type="submit" class="btn btn-primary btn-xs btn-block">保存</button>
-							   </form>
-						     </div>
-						   </div>
-						 </div>
+
 						 </td>
+						 </c:forEach>
+						 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="myModal">
+							 <div class="modal-dialog modal-lg" role="document">
+								 <div class="modal-content">
+									 <h2>学生评价</h2>
+									 <form action="teacherActionServlet?action=updateStudentById&pageNo=${requestScope.studentCommentPage.currentPage}" method="post">
+										 <input type="hidden" id="hidden1" name="s_id">
+										 <div class="form-group">
+											 <label for="inputEmail3" class="col-sm-2 control-label">学生评语</label>
+											 <div class="col-sm-10">
+												 <textarea class="form-control" rows="3" id="comment" name="comment"></textarea>
+											 </div>
+										 </div>
+										 <br /><br /><br /><br /><br />
+										 <button type="submit" class="btn btn-primary btn-xs btn-block">保存</button>
+									 </form>
+								 </div>
+							 </div>
+						 </div>
 					 </tr>
 				   </table>
+				   <br> 共${requestScope.studentCommentPage.pageCount }页  当前第${requestScope.studentCommentPage.currentPage}页
+				   <c:if test="${requestScope.studentCommentPage.currentPage != 1}">
+					   <a href="teacherActionServlet?action=StudentComment&pageNo=1" >首页</a>
+					   <a href="teacherActionServlet?action=StudentComment&pageNo=${requestScope.studentCommentPage.currentPage-1 }" >上一页</a>
+				   </c:if>
+
+
+				   <c:if test="${requestScope.studentCommentPage.currentPage != requestScope.studentCommentPage.pageCount}">
+					   <a href="teacherActionServlet?action=StudentComment&pageNo=${requestScope.studentCommentPage.currentPage+1 }" >下一页</a>
+					   <a href="teacherActionServlet?action=StudentComment&pageNo=${requestScope.studentCommentPage.pageCount }" >尾页</a>
+				   </c:if>
 			   </div>
 			   
 		  </div>
@@ -96,5 +129,16 @@
 		<script src="${pageContext.request.contextPath}/js/jquery-3.2.1.min.js"></script>
 		<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
 		<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+		<script>
+			$('#myModal').on('show.bs.modal', function (e) {
+				var btnThis = $(e.relatedTarget); //触发事件的按钮
+				var modal = $(this);  //当前模态框
+				var s_id = btnThis.closest('tr').find('td').eq(0).text();  //获取tr下第一个td的值(id)
+				var comment = btnThis.closest('tr').find('td').eq(5).text();//获取tr下第二个td的值(name)
+				modal.find('#comment').val(comment);
+				modal.find('#hidden1').val(s_id);
+				//modal.find('#hidden2').val(createTime);
+			})
+		</script>
 	</body>
 </html>

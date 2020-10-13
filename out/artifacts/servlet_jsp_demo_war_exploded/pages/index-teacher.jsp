@@ -53,7 +53,7 @@
     <div id="left">
 
         <div class="lf-bar"><a href="teacherActionServlet?action=WorkPlanPage&pageNo=1"><font>工作安排</font></a></div>
-        <div class="lf-bar"><a href=""><font>学生信息</font></a></div>
+        <div class="lf-bar"><a href="teacherActionServlet?action=StudentComment&pageNo=1"><font>学生信息</font></a></div>
 
 
     </div>
