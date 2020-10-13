@@ -38,6 +38,16 @@
         <url-pattern>/changePage</url-pattern>
     </servlet-mapping>
 
+<!--    改变用户状态-->
+    <servlet>
+        <servlet-name>changeStatus</servlet-name>
+        <servlet-class>com.qst.controller.UserStatusChange</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>changeStatus</servlet-name>
+        <url-pattern>/changeStatus</url-pattern>
+    </servlet-mapping>
+
 
     <servlet>
         <servlet-name>CourseServlet</servlet-name>
@@ -46,5 +56,32 @@
     <servlet-mapping>
         <servlet-name>CourseServlet</servlet-name>
         <url-pattern>/courseServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UserServlet</servlet-name>
+        <servlet-class>com.qst.web.UserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserServlet</servlet-name>
+        <url-pattern>/userServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>teacherServlet</servlet-name>
+        <servlet-class>com.qst.web.TeacherServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>teacherServlet</servlet-name>
+        <url-pattern>/teacherServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>StudentServlet</servlet-name>
+        <servlet-class>com.qst.web.StudentServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>StudentServlet</servlet-name>
+        <url-pattern>/studentServlet</url-pattern>
     </servlet-mapping>
 </web-app>

@@ -17,6 +17,12 @@ public interface AdminService {
     //查询所有管理员
     public List<User> queryAdmins();
 
+
     public User queryByUsername(String userName);
 
+    public int userStatus(int status,int userId);
+
+    public int deleteAdminId(int userId);
+
+    public List<User> queryUserByTag(String userName,int userType);
 }

@@ -46,10 +46,37 @@ public class AdminServiceImpl implements AdminService {
         return adminDao.queryAdmins();
     }
 
+
+
+    public int userStatus(int status,int userId){
+        if(status==0){
+            return adminDao.changeStatus(1,userId);
+        }else{
+            return adminDao.changeStatus(0,userId);
+        }
+    }
+
+    @Override
+    public int deleteAdminId(int userId) {
+       return adminDao.deleteAdminId(userId);
+    }
+
+    @Override
+    public List<User> queryUserByTag(String userName, int userType) {
+        System.out.println(userType);
+        if(("".equals(userName))&&(userType==0)){
+            return null;
+        }else if((!"".equals(userName))&&userType==0){
+            return adminDao.queryByUsername2(userName);
+        }else if(("".equals(userName))&&userType!=0){
+            return adminDao.queryByUserType(userType);
+        }else {
+            return adminDao.queryByAll(userName,userType);
+        }
+    }
+
     @Override
     public User queryByUsername(String userName) {
         return adminDao.queryByUsername(userName);
     }
-
-
 }

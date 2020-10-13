@@ -28,6 +28,10 @@ public class LoginController extends HttpServlet {
             req.setAttribute("loginmsg","用户名或密码不存在");
             //转发
             req.getRequestDispatcher("login.jsp").forward(req, resp);
+        }else if(user.getStatus()==0){
+            req.setAttribute("loginmsg","该账户已被禁用");
+            //转发
+            req.getRequestDispatcher("login.jsp").forward(req, resp);
         }else{
             HttpSession session = req.getSession();
             session.setAttribute("user", user);
