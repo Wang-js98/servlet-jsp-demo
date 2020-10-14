@@ -114,7 +114,7 @@ public class UserServlet extends BaseServlet {
         User user=adminService.queryByUsername(userName);
         HttpSession session = req.getSession();
         session.setAttribute("user", user);
-        req.getRequestDispatcher("/toUserManger").forward(req, resp);
+        req.getRequestDispatcher("index-admin.jsp").forward(req, resp);
     }
     protected void updatePwd(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();

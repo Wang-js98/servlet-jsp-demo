@@ -48,6 +48,7 @@ public class ClassRoomDaoImpl extends BaseDao implements ClassRoomDao {
 
     @Override
     public int deleteClassroomById(Integer c_id) {
+
         String sql="delete from classroom where c_id=?";
         return update(sql,c_id);
     }

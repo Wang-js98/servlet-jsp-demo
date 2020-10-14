@@ -11,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 public class ClassServlet extends BaseServlet{
     public ClassRoomService classRoomService=new ClassRoomServiceImpl();
@@ -37,8 +38,16 @@ public class ClassServlet extends BaseServlet{
 
     protected void deleteClassRoomById(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int id=WebUtils.parseInt(req.getParameter("c_id"),0);
-        classRoomService.deleteClassroomById(id);
-        resp.sendRedirect(req.getContextPath()+"/classServlet?action=pageClassRooms&pageNo="+req.getParameter("pageNo"));
+        int i = classRoomService.deleteClassroomById(id);
+        resp.setContentType("text/html;charset=utf-8");
+        PrintWriter out = resp.getWriter();
+        if(i==0){
+
+            out.print("<script>alert('当前数据有关联信息，无法删除');window.location.href='classServlet?action=pageClassRooms&pageNo="+req.getParameter("pageNo")+"'</script>");
+
+        }else {
+            resp.sendRedirect(req.getContextPath() + "/classServlet?action=pageClassRooms&pageNo=" + req.getParameter("pageNo"));
+        }
     }
 
     protected void queryClassRoomByName(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

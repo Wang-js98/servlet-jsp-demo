@@ -1,10 +1,13 @@
 package com.qst.service.impl;
 
 import com.qst.dao.ClassRoomDao;
+import com.qst.dao.StudentDao;
 import com.qst.dao.impl.ClassRoomDaoImpl;
+import com.qst.dao.impl.StudentDaoImpl;
 import com.qst.pojo.ClassRoom;
 import com.qst.pojo.Course;
 import com.qst.pojo.Page;
+import com.qst.pojo.Student;
 import com.qst.service.ClassRoomService;
 
 import java.util.List;
@@ -59,6 +62,13 @@ public class ClassRoomServiceImpl implements ClassRoomService {
 
     @Override
     public int deleteClassroomById(Integer c_id) {
-        return classRoomDao.deleteClassroomById(c_id);
+        StudentDao studentDao=new StudentDaoImpl();
+        List<Student> list = studentDao.queryByCid(c_id);
+        if(list.isEmpty()) {
+            classRoomDao.deleteClassroomById(c_id);
+            return 1;
+        }else{
+            return 0;
+        }
     }
 }

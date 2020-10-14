@@ -105,7 +105,23 @@
         <url-pattern>/teacherActionServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>CoursePlanServlet</servlet-name>
+        <servlet-class>com.qst.web.CoursePlanServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CoursePlanServlet</servlet-name>
+        <url-pattern>/coursePlanServlet</url-pattern>
+    </servlet-mapping>
 
+    <servlet>
+        <servlet-name>ScorePlanServlet</servlet-name>
+        <servlet-class>com.qst.web.ScorePlanServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ScorePlanServlet</servlet-name>
+        <url-pattern>/scorePlanServlet</url-pattern>
+    </servlet-mapping>
 
 
 

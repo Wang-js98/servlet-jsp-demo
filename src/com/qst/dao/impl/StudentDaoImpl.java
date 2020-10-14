@@ -32,4 +32,10 @@ public class StudentDaoImpl extends BaseDao implements StudentDao {
         String sql="select * from student limit "+dataNum+","+pageSize;
         return queryForList(Student.class,sql);
     }
+
+    @Override
+    public List<Student> queryByCid(int c_id) {
+        String sql="select * from student where c_id=?";
+        return queryForList(Student.class,sql,c_id);
+    }
 }

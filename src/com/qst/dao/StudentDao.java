@@ -16,4 +16,7 @@ public interface StudentDao {
     public List<Student> queryStus(int pageNo, int pageSize);
     //根据学生姓名查询
     public List<Student> queryByStudentName(String s_name);
+
+    //根据班级id查询学生
+    public List<Student> queryByCid(int c_id);
 }

@@ -37,6 +37,7 @@
 			  </button>
 			  <ul class="dropdown-menu">
 				  <li><a data-toggle="modal" data-target="#personMsg" href="#">个人信息</a></li>
+
 				  <li><a data-toggle="modal" data-target="#pwdMsg" href="#">密码修改</a></li>
 				  <li role="separator" class="divider"></li>
 				  <li><a href="userServlet?action=exitLogin">退出</a></li>
@@ -98,11 +99,10 @@
 		<div id="div1">
 			
 		  <div id="left">
-			  
-			   <div class="lf-bar"><a><font>课程安排</font></a></div>
-			   <div class="lf-bar"><a><font>成绩查询</font></a></div>
-			   
-			   
+
+			  <div class="lf-bar"><a href="coursePlanServlet?action=CoursePlanPage&pageNo=1"><font>课程安排</font></a></div>
+			  <div class="lf-bar"><a href="scorePlanServlet?action=ScorePlanPage&pageNo=1"><font>成绩查询</font></a></div>
+
 		  </div>
 		  <div id="right">
 			   
