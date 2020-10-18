@@ -123,6 +123,29 @@
         <url-pattern>/scorePlanServlet</url-pattern>
     </servlet-mapping>
 
+    <filter>
+        <filter-name>LoginFilter</filter-name>
+        <filter-class>com.qst.filter.LoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>/pages/*</url-pattern>
+    </filter-mapping>
+
+
+
+    <!--error-page标签配置，服务器出错之后，自动跳转要去的页面路径-->
+    <error-page>
+        <!--error-code是错误类型-->
+        <error-code>500</error-code>
+        <!--        location标签表示要跳转的路径-->
+        <location>/pages/error/error500.jsp</location>
+    </error-page>
+
+    <error-page>
+        <error-code>404</error-code>
+        <location>/pages/error/error404.jsp</location>
+    </error-page>
 
 
 </web-app>

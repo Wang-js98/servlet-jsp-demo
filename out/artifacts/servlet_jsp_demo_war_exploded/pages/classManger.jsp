@@ -166,13 +166,13 @@
 						 <td> 
 						 <a href="classServlet?action=deleteClassRoomById&c_id=${classrooms.c_id}&pageNo=${requestScope.classRooms.currentPage}" class="btn btn-danger btn-sm active" role="button">删除</a>
 						 <!-- Large modal -->
-						 <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">编辑</button>
+						 <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#myModal">编辑</button>
 						 
 
 						 </td>
 					 </tr>
 					   </c:forEach>
-					   <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="myModal">
+					   <div class="modal fade bs-example-modal-lg"  tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="myModal">
 						   <div class="modal-dialog modal-lg" role="document">
 							   <div class="modal-content">
 								   <h2>班级管理</h2>

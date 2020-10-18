@@ -20,20 +20,31 @@ public class LoginController extends HttpServlet {
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //接收中文
         req.setCharacterEncoding("utf-8");
+        HttpSession session = req.getSession();
         //接收前端用户数据
+        String val=req.getParameter("checks");  //用户输入的验证码
+        //实际验证码
+        String confirmVal= (String) session.getAttribute("RANDOMVALIDATECODEKEY");
+        System.out.println(confirmVal+"---------");
+        System.out.println(val+"---------");
         String name = req.getParameter("userName");
         String pwd = req.getParameter("password");
         User user = adminService.queryByUsername(name);
         if(user == null || !(user.getPassword().equals(pwd))){
-            req.setAttribute("loginmsg","用户名或密码不存在");
+            req.setAttribute("loginmsg","用户名或密码错误");
+            //转发
+            req.getRequestDispatcher("login.jsp").forward(req, resp);
+        }else if(!confirmVal.equals(val)){
+            req.setAttribute("loginmsg","验证码不正确");
             //转发
             req.getRequestDispatcher("login.jsp").forward(req, resp);
         }else if(user.getStatus()==0){
             req.setAttribute("loginmsg","该账户已被禁用");
             //转发
             req.getRequestDispatcher("login.jsp").forward(req, resp);
-        }else{
-            HttpSession session = req.getSession();
+        }
+        else{
+
             session.setAttribute("user", user);
 
           if(user.getUserType()==3){

@@ -11,6 +11,7 @@ import com.qst.service.TeacherService;
 import com.qst.service.impl.AdminServiceImpl;
 import com.qst.service.impl.StudentServiceImpl;
 import com.qst.service.impl.TeacherServiceImpl;
+import com.qst.utils.RandomValidateCode;
 import com.qst.utils.WebUtils;
 
 import javax.servlet.ServletException;
@@ -141,6 +142,32 @@ public class UserServlet extends BaseServlet {
         session.invalidate();
         resp.sendRedirect("login.jsp");
     }
+
+    public void getVerify(HttpServletRequest request, HttpServletResponse response){
+
+        response.setContentType("image/jpeg");//设置相应类型,告诉浏览器输出的内容为图片
+
+        response.setHeader("Pragma", "No-cache");//设置响应头信息，告诉浏览器不要缓存此内容
+
+        response.setHeader("Cache-Control", "no-cache");
+
+        response.setDateHeader("Expire", 0);
+
+        RandomValidateCode randomValidateCode = new RandomValidateCode();
+
+        try {
+
+            randomValidateCode.getRandcode(request, response);//输出验证码图片方法
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        }
+
+    }
+
+
 }
 
 

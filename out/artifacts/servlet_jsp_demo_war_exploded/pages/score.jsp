@@ -18,7 +18,7 @@
 		<!-- Single button -->
 		<div class="btn-group" id="btng1">
 			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				Action <span class="caret"></span>
+				${user.userName} <span class="caret"></span>
 			</button>
 			<ul class="dropdown-menu">
 				<li><a data-toggle="modal" data-target="#personMsg" href="#">个人信息</a></li>
